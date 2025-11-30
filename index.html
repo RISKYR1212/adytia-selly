@@ -334,74 +334,78 @@
   </section>
 
 
-  <!-- ====================== SCRIPT UCAPAN & LOCALSTORAGE ====================== -->
+  <!-- ====================== SCRIPT UCAPAN & Sheet ====================== -->
   <script>
-    // ========== TAMPILKAN UCAPAN DARI LOCALSTORAGE ==========
-    function renderUcapan() {
-      let data = JSON.parse(localStorage.getItem("ucapanList")) || [];
-      let list = document.getElementById("list-ucapan");
-      list.innerHTML = "";
+  const API_URL = "https://script.google.com/macros/s/AKfycbxAxvC2Bohl7MWwKHqzd9ArDtv-fcl4nq4JzyXaxPL6h8Mw-7VmVV7RUbUYyOrDOOUEfw/exec";
 
-      data.forEach(({ nama, ucapan }) => {
-        let firstLetter = nama.charAt(0).toUpperCase();
+  // ===================== AMBIL DATA DARI GOOGLE SHEET =====================
+  function renderUcapan() {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => {
+        let list = document.getElementById("list-ucapan");
+        list.innerHTML = "";
 
-        let item = `
-        <div class="list-group-item mb-2 shadow-sm d-flex align-items-start">
-          <div style="
-            width:45px;
-            height:45px;
-            border-radius:50%;
-            background:#ff8fb1;
-            color:#fff;
-            font-weight:bold;
-            font-size:20px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin-right:15px;">
-            ${firstLetter}
-          </div>
+        data.reverse().forEach(({ nama, ucapan }) => {
+          let firstLetter = nama.charAt(0).toUpperCase();
 
-          <div>
-            <strong>${nama}</strong><br>
-            <span>${ucapan}</span>
-          </div>
-        </div>
-      `;
+          let item = `
+            <div class="list-group-item mb-2 shadow-sm d-flex align-items-start">
+              <div style="
+                width:45px;
+                height:45px;
+                border-radius:50%;
+                background:#ff8fb1;
+                color:#fff;
+                font-weight:bold;
+                font-size:20px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                margin-right:15px;">
+                ${firstLetter}
+              </div>
 
-        list.innerHTML = item + list.innerHTML;
+              <div>
+                <strong>${nama}</strong><br>
+                <span>${ucapan}</span>
+              </div>
+            </div>
+          `;
+
+          list.innerHTML += item;
+        });
       });
-    }
+  }
 
-    // ========== EVENT SUBMIT FORM ==========
-    document.getElementById("rsvp-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+  // ===================== SUBMIT FORM =====================
+  document.getElementById("rsvp-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      let nama = document.getElementById("nama").value.trim();
-      let ucapan = document.getElementById("ucapan").value.trim();
+    let nama = document.getElementById("nama").value.trim();
+    let ucapan = document.getElementById("ucapan").value.trim();
 
-      if (!nama || !ucapan) return;
+    if (!nama || !ucapan) return;
 
-      // Kirim ke WhatsApp
-      let noWa = "6287777017805";
-      let waText = `Halo, saya ${nama}.%0AIngin mengirim ucapan:%0A"${ucapan}"`;
-      window.open(`https://wa.me/${noWa}?text=${waText}`, "_blank");
+    // Kirim ke WhatsApp
+    let noWa = "6287777017805";
+    let waText = `Halo, saya ${nama}.%0AIngin mengirim ucapan:%0A"${ucapan}"`;
+    window.open(`https://wa.me/${noWa}?text=${waText}`, "_blank");
 
-      // Simpan ke LocalStorage
-      let data = JSON.parse(localStorage.getItem("ucapanList")) || [];
-      data.push({ nama, ucapan });
-      localStorage.setItem("ucapanList", JSON.stringify(data));
-
-      // Render ulang
-      renderUcapan();
-
-      // Reset form
+    // ===================== KIRIM KE GOOGLE SHEET =====================
+    fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({ nama, ucapan })
+    })
+    .then(() => {
+      renderUcapan(); // Refresh list
       document.getElementById("rsvp-form").reset();
     });
+  });
 
-    // ========== LOAD DATA KETIKA REFRESH ==========
-    renderUcapan();
-  </script>
+  // ===================== LOAD DATA =====================
+  renderUcapan();
+</script>
 
   </script>
   <!-- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
