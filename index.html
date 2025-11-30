@@ -534,18 +534,19 @@
     }
 
     function enableScroll() {
-      window.onscroll = function () { }
-      rootElement.style.scrollBehavior = 'smooth';
-      // localStorage.setItem('opened', 'true');
-      playAudio();
-    }
+  window.onscroll = function () {};
+  rootElement.style.scrollBehavior = 'smooth';
 
-    function playAudio() {
-      song.volume = 0.1;
-      audioIconWrapper.style.display = 'flex';
-      song.play();
-      isPlaying = true;
-    }
+  // MULAIKAN AUDIO SETELAH USER INTERAKSI
+  song.play().then(() => {
+    audioIconWrapper.style.display = 'flex';
+    isPlaying = true;
+  }).catch(() => {
+    // Jika autoplay gagal, icon tetap muncul
+    audioIconWrapper.style.display = 'flex';
+  });
+}
+
 
     audioIconWrapper.onclick = function () {
       if (isPlaying) {
