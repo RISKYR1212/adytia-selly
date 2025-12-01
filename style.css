@@ -114,6 +114,100 @@ body {
     font-family: "Times New Roman", serif;
 }
 
+/* animation gambar adit */
+/* Container animation */
+.person {
+  animation: fadeSlideUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Photo frame improved animation */
+.photo-frame {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  animation: floatPhoto 4s ease-in-out infinite, softZoom 6s ease-in-out infinite;
+}
+
+/* Floating animation (naik turun lembut) */
+@keyframes floatPhoto {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Soft zoom (pelan membesar–mengecil) */
+@keyframes softZoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* Photo styling */
+.portrait-photo {
+  width: 160px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: photoFade 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* Fade-in untuk foto */
+@keyframes photoFade {
+  to { opacity: 1; }
+}
+
+/* Couple name soft fade */
+.couple-name {
+  animation: nameFade 1.3s ease forwards;
+  opacity: 0;
+}
+@keyframes nameFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Deskripsi animasi */
+.desc {
+  animation: descFade 1.5s ease forwards;
+  opacity: 0;
+}
+@keyframes descFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Heart animation (pulse beat) */
+.heart {
+  font-size: 40px;
+  margin: 0 25px;
+  animation: heartbeat 1.4s infinite ease-in-out;
+  color: #ff6b9a;
+  text-shadow: 0 0 10px #ff9fbc;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(0.9); }
+  75% { transform: scale(1.15); }
+}
+
+/* Fade-slide global animation */
+.fade-slide {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 1s ease;
+}
+
+.fade-slide.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 #petal-container {
   position: fixed;
   inset: 0;              /* full‑screen overlay */
@@ -1206,6 +1300,120 @@ footer.footer {
     50% { opacity: 0.6; transform: translateY(10px) scale(1.02); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* =======================
+   WEDDING WISH FORM
+   ======================= */
+#wedding-wish {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.wish-form {
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 25px;
+  background: #ffffffee;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(8px);
+  animation: fadeSlideUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Animation */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.wish-form input,
+.wish-form textarea,
+.wish-form select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+  background: #fafafa;
+}
+
+.wish-form input:focus,
+.wish-form textarea:focus,
+.wish-form select:focus {
+  border-color: #d699ff;
+  box-shadow: 0 0 10px #c68cff55;
+}
+
+.wish-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #d28aff, #a86bff);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.wish-btn:hover {
+  background: linear-gradient(45deg, #b96bff, #8d50ff);
+  transform: translateY(-2px);
+}
+
+/* Feedback */
+.wish-feedback {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* List of Wishes */
+.wish-list {
+  margin-top: 25px;
+  display: grid;
+  gap: 12px;
+}
+
+.wish-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.wish-card h4 {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.wish-card p {
+  font-size: 14px;
+  color: #444;
+}
+
 
 /* =========================================================
    WEDDING WISH CARDS

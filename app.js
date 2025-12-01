@@ -1,14 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-document.addEventListener("DOMContentLoaded", () => {
-
   const opening = document.getElementById("opening");
   const main = document.getElementById("main");
   const openBtn = document.getElementById("openBtn");
   const weddingMusic = document.getElementById("bg-music");
 
-  openBtn.addEventListener("click", () => {
+  /** ============ WEDDING WISH SUBMIT ============ **/
+document.getElementById("wishForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
+  const nama = document.getElementById("wish-name").value;
+  const ucapan = document.getElementById("wish-message").value;
+  const hadir = document.getElementById("wish-hadir").value;
+
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxAxvC2Bohl7MWwKHqzd9ArDtv-fcl4nq4JzyXaxPL6h8Mw-7VmVV7RUbUYyOrDOOUEfw/exec";
+
+  await fetch(scriptURL, {
+    method: "POST",
+    body: new FormData(document.getElementById("wishForm"))
+  });
+
+  // reset form
+  document.getElementById("wishForm").reset();
+});
+
+
+  /** OPENING BUTTON **/
+  openBtn.addEventListener("click", () => {
     opening.style.transition = "opacity 0.8s ease";
     opening.style.opacity = "0";
 
@@ -28,34 +45,30 @@ document.addEventListener("DOMContentLoaded", () => {
       weddingMusic.play().catch(err => {
         console.log("Autoplay error:", err);
       });
-
     }, 800);
   });
 
-});
-
-
-  /* ========================
-     Fade + Slide Animation
-  ========================= */
+  /** ========================
+   *  Fade + Slide Animation
+   * ======================== **/
   function triggerAnimations() {
     document.querySelectorAll(".fade-slide").forEach((el, i) =>
       setTimeout(() => el.classList.add("show"), i * 200)
     );
   }
 
-  /* ========================
-     Parallax
-  ========================= */
+  /** ========================
+   *  Parallax Effect
+   * ======================== **/
   window.addEventListener("scroll", () => {
     document.querySelectorAll(".parallax-img").forEach(img => {
       img.style.transform = `translateY(${window.scrollY * 0.25}px)`;
     });
   });
 
-  /* ========================
-     Falling Petals
-  ========================= */
+  /** ========================
+   *  Falling Petals
+   * ======================== **/
   function startPetals() {
     const container = document.getElementById("petal-container");
     if (!container) return;
@@ -74,5 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(p);
     }
   }
-
 });
+
+/** ========================
+ *  Open Location (Google Maps)
+ * ======================== **/
+function openLocation(url) {
+  window.open(url, '_blank'); // membuka lokasi di tab baru
+}

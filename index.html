@@ -103,7 +103,7 @@
           <img src="img/selly.jpg" class="portrait-photo">
         </div>
         <h2 class="couple-name fade-slide">SELLYA</h2>
-        <p class="desc fade-slide">Sellya Amanda Herlita<br>Putri pertama dari Bapak Didi & Ibu Neneng Herlinda (alm)</p>
+        <p class="desc fade-slide">Sellya Amanda Herlita<br>Putri pertama dari Bapak Didi & Ibu Eneng Herlinda (almh)</p>
       </div>
 
       <div class="heart fade-slide">❤</div>
@@ -141,29 +141,38 @@
   </section>
 
   <!-- JADWAL -->
-  <section id="jadwal" class="jadwal-section">
-    <div class="jadwal-card">
-      <h2 class="judul">Akad Nikah</h2>
-      <div class="tanggal-box">
-        <span class="hari">Sabtu</span>
-        <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
-        <span class="tahun">2026</span>
-      </div>
-      <p class="waktu">PUKUL 08.30 WIB – 11:00</p>
-      <div class="lokasi"><h4>LOKASI</h4><p>https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw</p></div>
+<section id="jadwal" class="jadwal-section">
+  <div class="jadwal-card">
+    <h2 class="judul">Akad Nikah</h2>
+    <div class="tanggal-box">
+      <span class="hari">Sabtu</span>
+      <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
+      <span class="tahun">2026</span>
     </div>
+    <p class="waktu">PUKUL 08.30 WIB - 11:00</p>
+    <div class="lokasi">
+      <h4>LOKASI</h4>
+      <p>Alamat Akad Nikah</p>
+      <a href="https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw" target="_blank" class="btn-maps">Lihat di Maps</a>
+    </div>
+  </div>
 
-    <div class="jadwal-card">
-      <h2 class="judul">Resepsi</h2>
-      <div class="tanggal-box">
-        <span class="hari">Sabtu</span>
-        <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
-        <span class="tahun">2026</span>
-      </div>
-      <p class="waktu">PUKUL 11.00 WIB - SELESAI</p>
-      <div class="lokasi"><h4>LOKASI</h4><p>Kediaman Mempelai Wanita</p></div>
+  <div class="jadwal-card">
+    <h2 class="judul">Resepsi</h2>
+    <div class="tanggal-box">
+      <span class="hari">Sabtu</span>
+      <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
+      <span class="tahun">2026</span>
     </div>
-  </section>
+    <p class="waktu">PUKUL 11.00 WIB - SELESAI</p>
+    <div class="lokasi">
+      <h4>LOKASI</h4>
+      <p>Kediaman Mempelai Wanita</p>
+      <a href="https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw" target="_blank" class="btn-maps">Lihat di Maps</a>
+    </div>
+  </div>
+</section>
+
 
   <!-- GALLERY -->
   <section class="section fade-slide card-section">
@@ -216,7 +225,7 @@
       </div>
       <div class="gift-modal-card wide">
         <div class="gift-icon">🎁</div>
-        <div><p class="nama">SELLYA</p><p class="alamat">Kp. Bojong Koneng RT 05 RW 07, Desa Lulut</p></div>
+        <div><p class="nama">SELLYA</p><p class="alamat">Kp. Nyangkokot Gunung Sari Kec Citeureup RT3/05</p></div>
       </div>
       <button class="btn-konfirmasi">Konfirmasi</button>
     </div>
@@ -224,15 +233,40 @@
 
   <!-- WEDDING WISH -->
   <section id="wedding-wish" class="section">
-    <h2 class="section-title">Wedding Wish</h2>
-    <div class="wish-form-box">
-      <input type="text" id="wish-name" placeholder="Nama Kamu">
-      <textarea id="wish-message" placeholder="Tulis ucapan"></textarea>
-      <button id="sendWishBtn">Kirim Ucapan</button>
-      <div id="wishFeedback"></div>
+  <h2 class="section-title">Wedding Wish</h2>
+
+  <form id="wishForm" class="wish-form">
+    
+    <div class="form-group">
+      <label>Nama</label>
+      <input type="text" id="wish-name" name="nama" placeholder="Masukkan nama kamu..." required>
     </div>
-    <div id="wishList" class="wish-list"></div>
-  </section>
+
+    <div class="form-group">
+      <label>Ucapan</label>
+      <textarea id="wish-message" name="ucapan" rows="4" placeholder="Tulis ucapan terbaikmu..." required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Kehadiran</label>
+      <select id="wish-hadir" name="hadir" required>
+        <option value="">Pilih Kehadiran</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+    </div>
+
+    <button type="submit" class="wish-btn">Kirim Ucapan</button>
+    <div id="wishFeedback" class="wish-feedback"></div>
+
+  </form>
+
+  <div id="wishList" class="wish-list"></div>
+</section>
+
+
+
+<div id="wishList" class="wish-list"></div>
 
   <!-- CLOSING -->
   <section class="closing">
@@ -262,6 +296,7 @@ openBtn.addEventListener('click', () => {
   mainContent.classList.remove('hidden');
   triggerAnimations();
 });
+
 
 // PARALLAX / FADE SLIDE
 function triggerAnimations() {
@@ -335,6 +370,8 @@ sendBtn.addEventListener('click', () => {
   wishFeedback.innerText = 'Ucapan berhasil dikirim!';
 });
 </script>
+<script src="app.js"></script>
+
 
 </body>
 </html>
