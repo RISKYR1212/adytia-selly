@@ -1,599 +1,340 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Adytia & Selly Wedding</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:wght@100;300;400;600;700&display=swap"
-    rel="stylesheet">
-
-  <!-- simplyCountdown -->
-  <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css" />
-  <script src="countdown/simplyCountdown.min.js"></script>
-
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-</head>
+  
 
+</head>
 <body>
 
-  <section id="hero"
-    class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
-    <main>
-      <h4>Kepada <span>Bapak/Ibu/Saudara/i, </span></h4>
-      <h1>Adytia Fadlillah <br> & <br>Selly Amanda herlita <br> </h1>
-      <p>Akan melangsungkan resepsi pernikahan dalam:</p>
-      <div class="simply-countdown"></div>
-      <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()">Lihat Undangan</a>
-    </main>
+  <!-- Musik BG -->
+<audio id="bg-music" loop>
+  <source src="audio/save-and-sound.mp3" type="audio/mp3">
+</audio>
 
-  </section>
+<!-- Tombol Musik -->
+<div id="music-btn" class="music-btn">
+  🎵
+</div>
 
-  <nav class="navbar navbar-expand-md bg-transparent sticky-top mynavbar">
-    <div class="container">
-      <a class="navbar-brand" href="#">WEDDING </a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">WEDDING </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="#home">Home</a>
-            <a class="nav-link" href="#info">Info</a>
-            <a class="nav-link" href="#story">Story</a>
-            <a class="nav-link" href="#gallery">Gallery</a>
-            <a class="nav-link" href="#rsvp">RSVP</a>
-            <a class="nav-link" href="#gifts">Gifts</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+<script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
 
-  <section id="home" class="home">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-          <h2>Acara Pernikahan</h2>
-          <h3>Diselenggarakan pada 03 Januari 2026 di Citeureup kp. Tarikolot Kab Bogor, Jawa Barat.</h3>
-          <p>Oleh karena itu, d engan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu, Saudara/i, untuk hadir
-            pada acara pernikahan kami. </p>
-        </div>
-      </div>
+  let isPlaying = false;
 
-      <div class="row couple">
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-8 text-end">
-              <h3>Adytia Fadlillah</h3>
-              <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque praesentium aut ipsa perferendis,
-                incidunt soluta?</p> -->
-              <p>Putra dari Bpk. muhamad rokip <br> dan <br> Ibu Kholidah</p>
-            </div>
-            <div class="col-4">
-              <img src="img/adit.jpg" alt="Sandhika Galih" class="img-responsive rounded-circle">
-            </div>
-          </div>
-        </div>
-
-        <span class="heart"><i class="bi bi-heart-fill"></i></span>
-
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-4">
-              <img src="img/selly.jpg" alt="Nofariza" class="img-responsive rounded-circle">
-            </div>
-            <div class="col-8">
-              <h3>Selly Amanda Herlita</h3>
-              <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque praesentium aut ipsa perferendis,
-                incidunt soluta?</p> -->
-              <p>Putra dari Bpk. didi Bin Haji mahpud <br> dan <br> Ibu Eneng Herlinda (alm)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="info" class="info">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-10 text-center">
-          <h2>Informasi Acara</h2>
-          <p class="alamat">Gn. Sari, Kec. Citeureup, Kabupaten Bogor, Jawa Barat <br> Bogor</p>
-
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.060392322606!2d106.8954804!3d-6.486603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c07b0ef315ff%3A0xc1c3166419a199ab!2sGn.%20Sari%2C%20Kec.%20Citeureup%2C%20Kabupaten%20Bogor%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1700000000000"
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-
-
-
-          <a href="https://www.google.com/maps/place/GV7W%2B6FM,+Gn.+Sari,+Citeureup,+Bogor">Klik untuk
-            membuka peta</a>
-          <p class="description">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan namun tidak
-            ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal, atau salah tempat.</p>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mt-4">
-        <div class="col-md-5 col-10">
-          <div class="card text-center text-bg-light mb-5">
-            <div class="card-header">Akad Nikah</div>
-            <div class="card-body">
-              <div class="row justify-content-center">
-                <div class="col-md-6">
-                  <i class="bi bi-clock d-block"></i>
-                  <span>08.30 - 11.00</span>
-                </div>
-                <div class="col-md-6">
-                  <i class="bi bi-calendar3 d-block"></i>
-                  <span>Sabtu, 03 Januari 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer">
-              Saat acara akad diharapkan untuk kondusif menjaga kekhidmatan dan kekhusyuan seluruh prosesi.
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5 col-10">
-          <div class="card text-center text-bg-light">
-            <div class="card-header">Resepsi</div>
-            <div class="card-body">
-              <div class="row justify-content-center">
-                <div class="col-md-6">
-                  <i class="bi bi-clock d-block"></i>
-                  <span>11.00 - selesai</span>
-                </div>
-                <div class="col-md-6">
-                  <i class="bi bi-calendar3 d-block"></i>
-                  <span>Sabtu, 03 Januari 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer">
-              Saat acara akad diharapkan untuk kondusif menjaga kekhidmatan dan kekhusyuan seluruh prosesi.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="story" class="story">
-    <div class="container">
-      <!-- <div class="row justify-content-center">
-        <div class="col-md-8 col-10 text-center">
-          <span>Bagaimana Cinta Kami Bersemi</span>
-          <h2>Cerita Kami</h2>
-          <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, similique non soluta nulla asperiores
-            voluptatem.</p> -->
-      <!-- </div> -->
-      <!-- </div> -->
-
-      <!-- <div class="row">
-        <div class="col">
-          <ul class="timeline">
-            <li>
-              <div class="timeline-image" style="background-image: url(img/sman23.jpg);"></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h3>Pertama Bertemu</h3>
-                  <span>1 Juni 2000</span>
-                </div>
-                <div class="timeline-body">
-                  <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, modi autem? Commodi autem quo quia? -->
-      </p>
-    </div>
-    <!-- </div> -->
-
-    </li>
-    <!-- <li class="timeline-inverted">
-              <div class="timeline-image" style="background-image: url(https://picsum.photos/300/300);"></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h3>Mulai Serius</h3>
-                  <span>1 Januari 2005</span>
-                </div>
-                <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto enim eaque obcaecati odit
-                    itaque explicabo quisquam quos at.
-                  </p> -->
-    </div>
-    </div>
-
-    </li>
-    <li>
-      <!-- <div class="timeline-image" style="background-image: url(https://picsum.photos/301/301);"></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h3>Tunangan</h3>
-                  <span>7 November 2009</span>
-                </div>
-                <div class="timeline-body">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, deleniti distinctio. Esse quas sit
-                  explicabo corporis magni qui expedita a.
-                </div> -->
-      </div>
-    </li>
-    </ul>
-    </div>
-    </div>
-    </div>
-  </section>
-
-  <section id="gallery" class="gallery">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-10 text-center">
-          <span>Memori Kisah Kami</span>
-          <h2>Galeri Foto</h2>
-          <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, itaque?</p> -->
-        </div>
-      </div>
-
-      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 justify-content-center">
-        <div class="col mt-3">
-          <a href="img/gallery/foto 2 adit.jpg" data-toggle="lightbox" data-caption="Adytia & Selly"
-            data-gallery="mygallery">
-            <img src="img/gallery/thumbnail/foto 1 adit.jpg" alt="Adytia & Selly 1" class="img-fluid w-100 rounded">
-          </a>
-        </div>
-        <div class="col mt-3">
-          <a href="https://picsum.photos/id/300/1200/768" data-toggle="lightbox" data-caption="Adytia & Selly 2"
-            data-gallery="mygallery">
-            <img src="img/gallery/foto 3 adit.jpg" alt="Adytia & Selly 2" class="img-fluid w-100 rounded">
-          </a>
-        </div>
-        <div class="col mt-3">
-          <a href="https://picsum.photos/id/301/1200/768" data-toggle="lightbox" data-caption="Adytia & Selly 3"
-            data-gallery="mygallery">
-            <img src="img/gallery/foto 4 adit.jpg" alt="Adytia & Selly 3" class="img-fluid w-100 rounded">
-          </a>
-        </div>
-        <div class="col mt-3">
-          <a href="https://picsum.photos/id/302/1200/768" data-toggle="lightbox" data-caption="Adytia & Selly 4"
-            data-gallery="mygallery">
-            <img src="img/gallery/foto 2 adit.jpg" alt="Adytia & Selly 4" class="img-fluid w-100 rounded">
-          </a>
-        </div>
-        <div class="col mt-3">
-          <a href="https://picsum.photos/id/304/1200/768" data-toggle="lightbox" data-caption="Adytia & Selly 5"
-            data-gallery="mygallery">
-            <img src="img/gallery/selly.jpg" alt="Adytia & Selly 5" class="img-fluid w-100 rounded">
-          </a>
-        </div>
-        <div class="col mt-3">
-          <a href="https://picsum.photos/id/305/1200/768" data-toggle="lightbox" data-caption="Adytia & Selly 6"
-            data-gallery="mygallery">
-            <img src="img/gallery/adit.jpg" alt="Adytia & Selly 6" class="img-fluid w-100 rounded">
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="rsvp" class="rsvp">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-10 text-center">
-          <h2>Konfirmasi Kehadiran & Ucapan</h2>
-          <p>Isi form di bawah ini untuk konfirmasi dan memberikan ucapan terbaik.</p>
-        </div>
-      </div>
-
-      <!-- FORM -->
-      <form id="rsvp-form" class="row g-3 justify-content-center">
-        <div class="col-md-4 col-10">
-          <label class="form-label">Nama</label>
-          <input type="text" id="nama" class="form-control" required>
-        </div>
-
-        <div class="col-md-4 col-10">
-          <label class="form-label">Ucapan</label>
-          <textarea id="ucapan" class="form-control" required style="height: 38px;"></textarea>
-        </div>
-
-        <div class="col-12 text-center mt-3">
-          <button type="submit" class="btn btn-primary px-4">Kirim Ucapan</button>
-        </div>
-      </form>
-
-      <hr class="my-4">
-
-      <!-- LIST UCAPAN -->
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-10">
-          <h4 class="text-center mb-3">Ucapan yang Masuk</h4>
-
-          <div id="list-ucapan" class="list-group">
-            <!-- Ucapan otomatis muncul -->
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ====================== SCRIPT UCAPAN & Sheet ====================== -->
-  <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbxAxvC2Bohl7MWwKHqzd9ArDtv-fcl4nq4JzyXaxPL6h8Mw-7VmVV7RUbUYyOrDOOUEfw/exec";
-
-  // ===================== AMBIL DATA DARI GOOGLE SHEET =====================
-  function renderUcapan() {
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(data => {
-        let list = document.getElementById("list-ucapan");
-        list.innerHTML = "";
-
-        data.reverse().forEach(({ nama, ucapan }) => {
-          let firstLetter = nama.charAt(0).toUpperCase();
-
-          let item = `
-            <div class="list-group-item mb-2 shadow-sm d-flex align-items-start">
-              <div style="
-                width:45px;
-                height:45px;
-                border-radius:50%;
-                background:#ff8fb1;
-                color:#fff;
-                font-weight:bold;
-                font-size:20px;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                margin-right:15px;">
-                ${firstLetter}
-              </div>
-
-              <div>
-                <strong>${nama}</strong><br>
-                <span>${ucapan}</span>
-              </div>
-            </div>
-          `;
-
-          list.innerHTML += item;
-        });
-      });
-  }
-
-  // ===================== SUBMIT FORM =====================
-  document.getElementById("rsvp-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    let nama = document.getElementById("nama").value.trim();
-    let ucapan = document.getElementById("ucapan").value.trim();
-
-    if (!nama || !ucapan) return;
-
-    // Kirim ke WhatsApp
-    let noWa = "6287777017805";
-    let waText = `Halo, saya ${nama}.%0AIngin mengirim ucapan:%0A"${ucapan}"`;
-    window.open(`https://wa.me/${noWa}?text=${waText}`, "_blank");
-
-    // ===================== KIRIM KE GOOGLE SHEET =====================
-    fetch(API_URL, {
-      method: "POST",
-      body: JSON.stringify({ nama, ucapan })
-    })
-    .then(() => {
-      renderUcapan(); // Refresh list
-      document.getElementById("rsvp-form").reset();
-    });
+  btn.addEventListener("click", () => {
+    if (isPlaying) {
+      music.pause();
+      btn.classList.remove("active");
+    } else {
+      music.play();
+      btn.classList.add("active");
+    }
+    isPlaying = !isPlaying;
   });
-
-  // ===================== LOAD DATA =====================
-  renderUcapan();
 </script>
 
-  </script>
-  <!-- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-          Disqus.</a></noscript> -->
-  </div>
-  </div>
 
+
+<!-- OPENING -->
+<section id="opening" class="opening">
+  <img src="img/bg-prewed.jpg" class="opening-bg">
+  <div class="opening-overlay"></div>
+  <div class="opening-content fade-in">
+    <p class="sub">THE WEDDING OF</p>
+    <h1 class="title">ADITYA & SELLYA</h1>
+    <button id="openBtn" class="open-btn">Buka Undangan</button>
   </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main id="main" class="hidden">
+  <!-- PARALLAX -->
+  <section id="bride-groom-section" class="parallax-section">
+  <div class="overlay"></div>
+  <div class="content">
+    <!-- <h2>Bride & Groom</h2>
+    <p>Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan...</p>
+    <div id="bride-groom" class="bg-grid">
+      <!-- Bride -->
+      <!-- <div class="person">
+        <div class="photo-frame"><img src="img/selly.jpg" class="portrait-photo"></div> --> 
+        <!-- <h2 class="person-name">SELLYA</h2>
+        <p class="person-desc">Putri pertama dari Bapak Didi & Ibu Neneng</p>
+      </div>
+      <div id="petal-container"></div>
+  </section>
+</div>
+      <div class="heart">❤</div> -->
+      <!-- Groom -->
+      <!-- <div class="person"> -->
+        <!-- <div class="photo-frame"><img src="img/adit.jpg" class="portrait-photo"></div>
+        <h2 class="person-name">ADIT</h2>
+        <p class="person-desc">Putra Kedua dari Bapak Muhamad Rokip & Ibu Kholidah</p> -->
+      <!-- </div>
+    </div>
+  </div> -->
+  <div id="petal-container"></div>
+  </section>
+</div>
+</section>
+
+
+  <!-- BRIDE & GROOM -->
+  <section class="section fade-slide card-section">
+    <h2 class="section-title">Bride & Groom</h2>
+    <p class="section-text">
+      Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh,
+      <br>pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+      <br><strong>QS. Ar-Rum Ayat 21</strong>
+    </p>
   </section>
 
-  <section id="gifts" class="gifts">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-10 text-center">
-          <span>ungkapan tanda kasih</span>
-          <h2>Kirim Hadiah</h2>
-          <p>Terima kasih atas doa dan restu yang diberikan. Bagi Bapak/Ibu/Saudara/i yang berkenan memberikan tanda
-            kasih, dapat melalui beberapa layanan di bawah ini.</p>
-
+  <section id="bride-groom" class="bride-groom fade-slide">
+    <div class="bg-grid">
+      <!-- Bride -->
+      <div class="person fade-slide">
+        <div class="photo-frame fade-slide">
+          <img src="img/selly.jpg" class="portrait-photo">
         </div>
+        <h2 class="couple-name fade-slide">SELLYA</h2>
+        <p class="desc fade-slide">Sellya Amanda Herlita<br>Putri pertama dari Bapak Didi & Ibu Neneng Herlinda (alm)</p>
       </div>
 
-      <div class="row justify-content-center text-center">
-        <div class="col-md-6">
-          <ul class="list-group">
-            <li class="list-group-item">
-              <div class="fw-bold">BRI</div>
-              038401044654502 - Adytia Fadlillah
-            </li>
-            <li class="list-group-item">
-              <div class="fw-bold">MANDIRI</div>
-              1330025558958 - SELLYA AMANDA HERLITA
-            </li>
-            <!-- <li class="list-group-item">
-              <div class="fw-bold">Saweria</div>
-              <img src="img/saweria.png" alt="Saweria QR" class="img-thumbnail" width="150">
-            </li> -->
-          </ul>
+      <div class="heart fade-slide">❤</div>
+
+      <!-- Groom -->
+      <div class="person fade-slide">
+        <div class="photo-frame fade-slide">
+          <img src="img/adit.jpg" class="portrait-photo">
         </div>
+        <h2 class="couple-name fade-slide">ADIT</h2>
+        <p class="desc fade-slide">Adytia Fadlillah<br>Putra Kedua dari Bapak Muhamad Rokip & Ibu Kholidah</p>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-          <small class="block">&copy; 2026 Adytia Wedding. All Rights Reserved.</small>
-          <!-- <small class="block">Design by <a href="">@sandhik</a>.</small> -->
+  <!-- PARALLAX -->
+  <!-- <section class="parallax">
+    <img src="img/bg-prewed.jpg" class="parallax-img">
+  </section> -->
 
-          <ul class="mt-3">
-            <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-            <li><a href="#"><i class="bi bi-youtube"></i></a></li>
-            <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-            <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-            <li><a href="#"><i class="bi bi-tiktok"></i></a></li>
-          </ul>
+  <!-- COUNTDOWN -->
+  <section class="countdown-section fade-slide">
+    <img src="img/bg-prewed.jpg" class="countdown-bg">
+    <div class="countdown-overlay"></div>
+    <div class="countdown-content">
+      <h2 class="countdown-title">Countdown Time</h2>
+      <div class="countdown-wrapper">
+        <div class="cd-box"><span id="days">0</span><p>Hari</p></div>
+        <div class="cd-box"><span id="hours">0</span><p>Jam</p></div>
+        <div class="cd-box"><span id="minutes">0</span><p>Menit</p></div>
+        <div class="cd-box"><span id="seconds">0</span><p>Detik</p></div>
+      </div>
+      <button class="save-btn">Save The Date</button>
+    </div>
+  </section>
+
+  <!-- JADWAL -->
+  <section id="jadwal" class="jadwal-section">
+    <div class="jadwal-card">
+      <h2 class="judul">Akad Nikah</h2>
+      <div class="tanggal-box">
+        <span class="hari">Sabtu</span>
+        <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
+        <span class="tahun">2026</span>
+      </div>
+      <p class="waktu">PUKUL 08.30 WIB – 11:00</p>
+      <div class="lokasi"><h4>LOKASI</h4><p>https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw</p></div>
+    </div>
+
+    <div class="jadwal-card">
+      <h2 class="judul">Resepsi</h2>
+      <div class="tanggal-box">
+        <span class="hari">Sabtu</span>
+        <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
+        <span class="tahun">2026</span>
+      </div>
+      <p class="waktu">PUKUL 11.00 WIB - SELESAI</p>
+      <div class="lokasi"><h4>LOKASI</h4><p>Kediaman Mempelai Wanita</p></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section fade-slide card-section">
+    <h2 class="section-title">GALLERY</h2>
+    <div class="gallery">
+      <img src="img/foto 1 adit.jpg">
+      <img src="img/adit.jpg">
+      <img src="img/selly.jpg">
+      <img src="img/foto 2 adit.jpg">
+      <img src="img/foto 3 adit.jpg">
+      <img src="img/foto 4 adit.jpg">
+    </div>
+  </section>
+
+  <!-- WEDDING GIFT BUTTON -->
+  <section class="section">
+    <button class="gift-btn" onclick="openGiftModal()">Wedding Gift</button>
+  </section>
+
+  <!-- MODAL GIFT -->
+  <div id="giftModal" class="gift-modal-overlay">
+    <div class="gift-modal-box">
+      <span class="gift-close" onclick="closeGiftModal()">✖</span>
+      <h2 class="gift-modal-title">Wedding Gift</h2>
+      <div class="gift-modal-grid">
+        <div class="gift-modal-card">
+          <div class="gift-top">
+            <span class="bank-name">BANK MANDIRI</span>
+            <img src="img/bank.jpg" class="bank-logo">
+          </div>
+          <p class="label">Nomor Rekening</p>
+          <div class="flex-row"><span class="rekening">1330025558958</span>
+            <button class="btn-salin" onclick="copyText('1330025558958')">📋 Salin</button>
+          </div>
+          <p class="label">Atas Nama</p>
+          <p class="nama">SELLY AMANDA HERLITA</p>
+        </div>
+        <div class="gift-modal-card">
+          <div class="gift-top">
+            <span class="bank-name">BANK BRI</span>
+            <img src="img/bank.jpg" class="bank-logo">
+          </div>
+          <p class="label">Nomor Rekening</p>
+          <div class="flex-row"><span class="rekening">038401044654502</span>
+            <button class="btn-salin" onclick="copyText('038401044654502')">📋 Salin</button>
+          </div>
+          <p class="label">Atas Nama</p>
+          <p class="nama">ADYTIA FADLILLAH</p>
         </div>
       </div>
-    </div>
-  </footer>
-
-  <div id="audio-container">
-    <audio id="song" autoplay loop>
-      <source src="audio/save-and-sound.mp3" type="audio/mp3">
-    </audio>
-
-    <div class="audio-icon-wrapper" style="display: none;">
-      <i class="bi bi-disc"></i>
+      <div class="gift-modal-card wide">
+        <div class="gift-icon">🎁</div>
+        <div><p class="nama">SELLYA</p><p class="alamat">Kp. Bojong Koneng RT 05 RW 07, Desa Lulut</p></div>
+      </div>
+      <button class="btn-konfirmasi">Konfirmasi</button>
     </div>
   </div>
 
+  <!-- WEDDING WISH -->
+  <section id="wedding-wish" class="section">
+    <h2 class="section-title">Wedding Wish</h2>
+    <div class="wish-form-box">
+      <input type="text" id="wish-name" placeholder="Nama Kamu">
+      <textarea id="wish-message" placeholder="Tulis ucapan"></textarea>
+      <button id="sendWishBtn">Kirim Ucapan</button>
+      <div id="wishFeedback"></div>
+    </div>
+    <div id="wishList" class="wish-list"></div>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
+  <!-- CLOSING -->
+  <section class="closing">
+    <img src="img/foto 1 adit.jpg" class="closing-bg-blur">
+    <img src="img/foto 1 adit.jpg" class="closing-bg">
+    <div class="closing-overlay"></div>
+    <div class="closing-content">
+      <h2 class="closing-title">Terima Kasih</h2>
+      <p class="closing-text">Merupakan suatu kehormatan dan 
+        kebahagiaan<br> bagi kami 
+        <b>apabila Bapak/Ibu/Saudara/i <br>berkenan hadir
+           dan memberikan do'a <br>restunya.</p>
+      <p class="closing-sub">Kami yang berbahagia,</p>
+      <h3 class="closing-names">ADYTIA & SELLYA</h3>
+    </div>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+</main>
 
-  <script>
-    simplyCountdown('.simply-countdown', {
-      year: 2026,
-      month: 1,
-      day: 3,
-      hours: 0,
-      words: {
-        days: { singular: 'hari', plural: 'hari' },
-        hours: { singular: 'jam', plural: 'jam' },
-        minutes: { singular: 'menit', plural: 'menit' },
-        seconds: { singular: 'detik', plural: 'detik' }
-      }
-    });
-  </script>
+<script>
+// OPENING
+const openBtn = document.getElementById('openBtn');
+const mainContent = document.getElementById('main');
+const opening = document.getElementById('opening');
+openBtn.addEventListener('click', () => {
+  opening.classList.add('hidden');
+  mainContent.classList.remove('hidden');
+  triggerAnimations();
+});
 
-
-  <script>
-    const stickyTop = document.querySelector('.sticky-top');
-    const offcanvas = document.querySelector('.offcanvas');
-
-    offcanvas.addEventListener('show.bs.offcanvas', function () {
-      stickyTop.style.overflow = 'visible';
-    });
-
-    offcanvas.addEventListener('hidden.bs.offcanvas', function () {
-      stickyTop.style.overflow = 'hidden';
-    });
-
-  </script>
-
-  <script>
-    const rootElement = document.querySelector(":root");
-    const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
-    const audioIcon = document.querySelector('.audio-icon-wrapper i');
-    const song = document.querySelector('#song');
-    let isPlaying = false;
-
-    function disableScroll() {
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-      window.onscroll = function () {
-        window.scrollTo(scrollTop, scrollLeft);
-      }
-
-      rootElement.style.scrollBehavior = 'auto';
-    }
-
-    function enableScroll() {
-  window.onscroll = function () {};
-  rootElement.style.scrollBehavior = 'smooth';
-
-  // MULAIKAN AUDIO SETELAH USER INTERAKSI
-  song.play().then(() => {
-    audioIconWrapper.style.display = 'flex';
-    isPlaying = true;
-  }).catch(() => {
-    // Jika autoplay gagal, icon tetap muncul
-    audioIconWrapper.style.display = 'flex';
+// PARALLAX / FADE SLIDE
+function triggerAnimations() {
+  const fadeEls = document.querySelectorAll('.fade-slide');
+  fadeEls.forEach((el, i) => {
+    setTimeout(() => el.classList.add('show'), i * 200);
+  });
+  const parallaxImgs = document.querySelectorAll('.parallax-img');
+  parallaxImgs.forEach((el, i) => {
+    setTimeout(() => el.classList.add('show'), i * 300);
   });
 }
 
+// GIFT MODAL
+function openGiftModal() {
+  document.getElementById('giftModal').classList.add('show');
+}
+function closeGiftModal() {
+  document.getElementById('giftModal').classList.remove('show');
+}
 
-    audioIconWrapper.onclick = function () {
-      if (isPlaying) {
-        song.pause();
-        audioIcon.classList.remove('bi-disc');
-        audioIcon.classList.add('bi-pause-circle');
-      } else {
-        song.play();
-        audioIcon.classList.add('bi-disc');
-        audioIcon.classList.remove('bi-pause-circle');
-      }
+// COPY REKENING
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Nomor rekening disalin: ' + text);
+  });
+}
 
-      isPlaying = !isPlaying;
-    }
+// COUNTDOWN
+const weddingDate = new Date('January 3, 2026 08:30:00').getTime();
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
 
-    // if (!localStorage.getItem('opened')) {
-    //   disableScroll();
-    // }
-    disableScroll();
-  </script>
-  <script>
-    window.addEventListener("load", function () {
-      const form = document.getElementById('my-form');
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        const action = e.target.action;
-        fetch(action, {
-          method: 'POST',
-          body: data,
-        })
-          .then(() => {
-            alert("Konfirmasi kehadiran berhasil terkirim!");
-          })
-      });
-    });
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
 
-  </script>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const nama = urlParams.get('n') || '';
-    const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
-    const namaContainer = document.querySelector('.hero h4 span');
-    namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
 
-    document.querySelector('#nama').value = nama;
-  </script>
+  daysEl.innerText = days;
+  hoursEl.innerText = hours;
+  minutesEl.innerText = minutes;
+  secondsEl.innerText = seconds;
+}, 1000);
+
+// WEDDING WISH
+const sendBtn = document.getElementById('sendWishBtn');
+const wishList = document.getElementById('wishList');
+const wishName = document.getElementById('wish-name');
+const wishMessage = document.getElementById('wish-message');
+const wishFeedback = document.getElementById('wishFeedback');
+
+sendBtn.addEventListener('click', () => {
+  const name = wishName.value.trim();
+  const message = wishMessage.value.trim();
+  if(!name || !message){
+    wishFeedback.innerText = "Nama dan ucapan harus diisi!";
+    return;
+  }
+  const card = document.createElement('div');
+  card.classList.add('wish-card');
+  card.innerHTML = `<h4>${name}</h4><p>${message}</p>`;
+  wishList.prepend(card);
+  wishName.value = '';
+  wishMessage.value = '';
+  wishFeedback.innerText = 'Ucapan berhasil dikirim!';
+});
+</script>
+
 </body>
-
 </html>
