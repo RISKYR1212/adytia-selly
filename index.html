@@ -233,116 +233,39 @@
   </div>
 
       <!-- WEDDING WISH -->
-<div class="container py-5">
-    <div class="row row-equal justify-content-center g-5">
+<div class="card">
+  <h2>Buku Tamu</h2>
 
-        <!-- KOTAK KIRI – FORM -->
-        <div class="col-12 col-md-5">
-            <div class="box-gold p-4">
-                <h4 class="text-center mb-4">Wedding Wish</h4>
+  <form id="wishForm">
+    <label>Nama</label>
+    <input type="text" id="wish-name" required>
 
-                <form id="wishForm">
+    <label>Ucapan</label>
+    <textarea id="wish-message" required></textarea>
 
-                    <div class="mb-3">
-                        <label class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" placeholder="Nama Anda" required>
-                    </div>
+    <label>Kehadiran</label>
+    <select id="wish-kehadiran">
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
 
-                    <div class="mb-3">
-                        <label class="form-label">Ucapan</label>
-                        <textarea class="form-control" id="ucapan" rows="4" placeholder="Tulis ucapan terbaik..." required></textarea>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="form-label">Kehadiran</label>
-                        <select class="form-select" id="kehadiran" required>
-                            <option value="">Pilih konfirmasi</option>
-                            <option value="Hadir">Hadir</option>
-                            <option value="Tidak Hadir">Tidak Hadir</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-dark w-100">Kirim Ucapan</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- KOTAK KANAN – HASIL UCAPAN -->
-        <div class="col-12 col-md-5">
-    <div class="box-gold p-4">
-                <h4 class="text-center mb-4">Ucapan Masuk</h4>
-
-                <div id="wishList" style="max-height: 270px; overflow-y: auto;">
-                    <!-- daftar ucapan -->
-                </div>
-            </div>
-        </div>
-
-    </div>
+    <button type="submit">Kirim</button>
+  </form>
 </div>
-<script>
-const GAS_URL = "https://script.google.com/macros/s/AKfycbycALvW0fK60fOj0QFgenQpw3wiUoD28vymNN5YR4k9S5OuiFLKxHdDq52MlR8nKqOuGg/exec";
 
-document.addEventListener("DOMContentLoaded", () => {
+<h3 style="text-align:center;margin-top:40px">Ucapan Tamu</h3>
 
-    // -----------------------------
-    // 🔵 AMBIL DATA UCAPAN (GET)
-    // -----------------------------
-    fetch(GAS_URL)
-        .then(res => res.json())
-        .then(data => {
-            console.log("Data dari sheet:", data);
+<section class="wish-section">
+  <h2 class="wish-title">Ucapan Tamu</h2>
 
-            let box = document.getElementById("wishList");
-            box.innerHTML = "";
-
-            data.forEach(item => {
-                box.innerHTML += `
-                    <div class="p-3 mb-3 rounded" style="background:#fff;">
-                        <strong>${item.nama}</strong><br>
-                        <span>${item.ucapan}</span><br>
-                        <small>${item.kehadiran} - ${item.waktu}</small>
-                    </div>
-                `;
-            });
-        })
-        .catch(err => console.error("ERROR GET:", err));
+  <!-- Container untuk efek masonry -->
+  <div id="wish-list" class="wish-masonry">
+    <!-- Card di-render otomatis oleh app.js -->
+  </div>
+</section>
 
 
-
-    // -----------------------------
-    // 🔴 KIRIM FORM (POST)
-    // -----------------------------
-    document.getElementById("wishForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const nama = document.getElementById("nama").value;
-        const ucapan = document.getElementById("ucapan").value;
-        const kehadiran = document.getElementById("kehadiran").value;
-
-        try {
-            const res = await fetch(GAS_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nama, ucapan, kehadiran })
-            });
-
-            const json = await res.json();
-            console.log("POST response:", json);
-
-            alert("Ucapan berhasil dikirim!");
-
-            // reload daftar ucapan
-            location.reload();
-
-        } catch (err) {
-            console.error("ERROR POST:", err);
-            alert("Gagal mengirim ucapan!");
-        }
-    });
-
-});
-</script>
+<div id="wish-list"></div>
 
       <!-- CLOSING -->
   <section class="closing">

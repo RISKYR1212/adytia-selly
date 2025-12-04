@@ -1,29 +1,37 @@
-// URL Google Apps Script kamu
-const GAS_URL = "https://script.google.com/macros/s/AKfycbycALvW0fK60fOj0QFgenQpw3wiUoD28vymNN5YR4k9S5OuiFLKxHdDq52MlR8nKqOuGg/exec";
+// ===============================================
+// KONFIGURASI
+// ===============================================
+const GAS_URL = "https://script.google.com/macros/s/AKfycbym4tW2SrFL8T-IDH70_TMHcUnxWve3zTfeiVVp6c2EqTmoRIt_jurpsAzasqxJ3Xgk0Q/exec"; // <--- ganti wajib
 
 
-// ===================================================
-// KIRIM DATA KE GOOGLE SHEET
-// ===================================================
-function kirimUcapan(data) {
-  const formData = new FormData();
-  formData.append("nama", data.nama);
-  formData.append("ucapan", data.ucapan);
-  formData.append("kehadiran", data.kehadiran);
+// ===============================================
+// KIRIM UCAPAN (POST)
+// ===============================================
+async function kirimUcapan(data) {
+  try {
+    const res = await fetch(GAS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
 
-  fetch(GAS_URL, {
-    method: "POST",
-    body: formData
-  })
-    .then(() => console.log("Data terkirim"))
-    .catch(err => console.error("POST ERROR:", err));
+    const result = await res.json();
+
+    if (result.status === "sukses") {
+      alert("Ucapan berhasil dikirim!");
+    } else {
+      alert("Gagal mengirim: " + result.message);
+    }
+  } catch (err) {
+    console.error("POST ERROR:", err);
+    alert("Gagal mengirim ucapan (Network error)");
+  }
 }
 
 
-
-// ===================================================
-// AMBIL DATA DARI SHEET
-// ===================================================
+// ===============================================
+// AMBIL DATA DARI SHEET (GET)
+// ===============================================
 function ambilUcapan() {
   fetch(GAS_URL)
     .then(res => res.json())
@@ -34,45 +42,40 @@ function ambilUcapan() {
 }
 
 
-// ===================================================
-// RENDER DATA KE HTML
-// ===================================================
+// ===============================================
+// RENDER UCAPAN KE HTML
+// ===============================================
 function renderUcapan(list) {
   const box = document.getElementById("wish-list");
+  if (!box) return;
 
-  if (!box) {
-    console.error("Element #wish-list tidak ditemukan!");
-    return;
-  }
+  box.innerHTML = ""; // Bersihkan dulu
 
-  box.innerHTML = "";
-
-  list.forEach(item => {
-    const bubble = `
-      <div class="wish-item p-3 mb-3 rounded" style="background:#fff;">
-        <strong>${item.nama}</strong><br>
-        ${item.ucapan}<br>
-        <small>${item.kehadiran} - ${item.waktu}</small>
-        <hr>
+  list.forEach((item, index) => {
+    const card = `
+      <div class="wish-item-card" style="animation-delay:${index * 0.08}s">
+        <div class="wish-name">${item.nama}</div>
+        <div class="wish-text">${item.ucapan}</div>
+        <div class="wish-meta">${item.kehadiran} • ${item.waktu}</div>
       </div>
     `;
-    box.innerHTML += bubble;
+    box.innerHTML += card;
   });
 }
 
 
-// ===================================================
-// DOM Loaded
-// ===================================================
+// ===============================================
+// DOM READY
+// ===============================================
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ============================
-     FORM HANDLER
-  ============================ */
+  // =================================================
+  // FORM HANDLE
+  // =================================================
   const form = document.getElementById("wishForm");
 
   if (form) {
-    form.addEventListener("submit", e => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const data = {
@@ -82,14 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       kirimUcapan(data);
+      form.reset();
 
-      setTimeout(ambilUcapan, 1500); // refresh list
+      setTimeout(ambilUcapan, 1200);
     });
   }
 
-  /* ============================
-     OPENING SCREEN
-  ============================ */
+  // =================================================
+  // OPENING SCREEN
+  // =================================================
   const openBtn = document.getElementById("openBtn");
   const opening = document.getElementById("opening");
   const main = document.getElementById("main");
@@ -97,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (openBtn && opening && main) {
     openBtn.addEventListener("click", () => {
-      opening.style.transition = "opacity 0.8s";
       opening.style.opacity = "0";
+      opening.style.transition = "opacity 0.8s";
 
       setTimeout(() => {
         opening.style.display = "none";
@@ -110,35 +114,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         triggerAnimations();
         startPetals();
-
         main.scrollIntoView({ behavior: "smooth" });
 
+        // Play background music
         weddingMusic?.play().catch(() => {});
       }, 800);
     });
   }
 
-  /* ============================
-     Animations
-  ============================ */
+  // =================================================
+  // Animasi Fade Slide
+  // =================================================
   function triggerAnimations() {
-    document.querySelectorAll(".fade-slide").forEach((el, i) =>
-      setTimeout(() => el.classList.add("show"), i * 200)
-    );
+    document.querySelectorAll(".fade-slide").forEach((el, i) => {
+      setTimeout(() => el.classList.add("show"), i * 150);
+    });
   }
 
-  /* ============================
-     Parallax
-  ============================ */
+  // =================================================
+  // Parallax Foto
+  // =================================================
   window.addEventListener("scroll", () => {
     document.querySelectorAll(".parallax-img").forEach(img => {
       img.style.transform = `translateY(${window.scrollY * 0.25}px)`;
     });
   });
 
-  /* ============================
-     Falling Petals
-  ============================ */
+  // =================================================
+  // Bunga Jatuh
+  // =================================================
   function startPetals() {
     const container = document.getElementById("petal-container");
     if (!container) return;
@@ -158,14 +162,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Ambil data saat halaman pertama kali dibuka
+  // Ambil ucapan pertama kali saat halaman terbuka
   ambilUcapan();
 });
 
 
-// ===================================================
+// ===============================================
 // BUKA GOOGLE MAPS
-// ===================================================
+// ===============================================
 function openLocation(url) {
   window.open(url, "_blank");
 }
