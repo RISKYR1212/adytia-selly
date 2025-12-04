@@ -1,20 +1,24 @@
 // URL Google Apps Script kamu
-const GAS_URL = "https://script.google.com/macros/s/AKfycbzstQkc7TrpFejH_AcdoQlA1wvM3hrT9-4JpP-S-MnjFU_1-ar6s9PdRAEXLI2DSVboAw/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbycALvW0fK60fOj0QFgenQpw3wiUoD28vymNN5YR4k9S5OuiFLKxHdDq52MlR8nKqOuGg/exec";
 
 
 // ===================================================
 // KIRIM DATA KE GOOGLE SHEET
 // ===================================================
 function kirimUcapan(data) {
+  const formData = new FormData();
+  formData.append("nama", data.nama);
+  formData.append("ucapan", data.ucapan);
+  formData.append("kehadiran", data.kehadiran);
+
   fetch(GAS_URL, {
     method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    body: formData
   })
     .then(() => console.log("Data terkirim"))
     .catch(err => console.error("POST ERROR:", err));
 }
+
 
 
 // ===================================================
