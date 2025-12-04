@@ -281,27 +281,68 @@
     </div>
 </div>
 <script>
-fetch("https://script.google.com/macros/s/AKfycbzstQkc7TrpFejH_AcdoQlA1wvM3hrT9-4JpP-S-MnjFU_1-ar6s9PdRAEXLI2DSVboAw/exec")
-  .then(res => res.json())
-  .then(data => {
-    console.log("Data dari sheet:", data);
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzstQkc7TrpFejH_AcdoQlA1wvM3hrT9-4JpP-S-MnjFU_1-ar6s9PdRAEXLI2DSVboAw/exec";
 
-    let box = document.getElementById("wishList");
-    box.innerHTML = "";
+document.addEventListener("DOMContentLoaded", () => {
 
-    data.forEach(item => {
-      box.innerHTML += `
-        <div class="p-3 mb-3 rounded" style="background:#fff;">
-          <strong>${item.nama}</strong><br>
-          <span>${item.ucapan}</span><br>
-          <small>${item.kehadiran} - ${item.waktu}</small>
-        </div>
-      `;
+    // -----------------------------
+    // 🔵 AMBIL DATA UCAPAN (GET)
+    // -----------------------------
+    fetch(GAS_URL)
+        .then(res => res.json())
+        .then(data => {
+            console.log("Data dari sheet:", data);
+
+            let box = document.getElementById("wishList");
+            box.innerHTML = "";
+
+            data.forEach(item => {
+                box.innerHTML += `
+                    <div class="p-3 mb-3 rounded" style="background:#fff;">
+                        <strong>${item.nama}</strong><br>
+                        <span>${item.ucapan}</span><br>
+                        <small>${item.kehadiran} - ${item.waktu}</small>
+                    </div>
+                `;
+            });
+        })
+        .catch(err => console.error("ERROR GET:", err));
+
+
+
+    // -----------------------------
+    // 🔴 KIRIM FORM (POST)
+    // -----------------------------
+    document.getElementById("wishForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nama = document.getElementById("nama").value;
+        const ucapan = document.getElementById("ucapan").value;
+        const kehadiran = document.getElementById("kehadiran").value;
+
+        try {
+            const res = await fetch(GAS_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nama, ucapan, kehadiran })
+            });
+
+            const json = await res.json();
+            console.log("POST response:", json);
+
+            alert("Ucapan berhasil dikirim!");
+
+            // reload daftar ucapan
+            location.reload();
+
+        } catch (err) {
+            console.error("ERROR POST:", err);
+            alert("Gagal mengirim ucapan!");
+        }
     });
-  })
-  .catch(err => console.error(err));
-</script>
 
+});
+</script>
 
       <!-- CLOSING -->
   <section class="closing">
