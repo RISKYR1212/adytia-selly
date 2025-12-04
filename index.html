@@ -281,7 +281,7 @@
     </div>
 </div>
 <script>
-fetch("https://script.google.com/macros/s/AKfycbxAxvC2Bohl7MWwKHqzd9ArDtv-fcl4nq4JzyXaxPL6h8Mw-7VmVV7RUbUYyOrDOOUEfw/exec")
+fetch("https://script.google.com/macros/s/AKfycbzstQkc7TrpFejH_AcdoQlA1wvM3hrT9-4JpP-S-MnjFU_1-ar6s9PdRAEXLI2DSVboAw/exec")
   .then(res => res.json())
   .then(data => {
     console.log("Data dari sheet:", data);
@@ -294,7 +294,7 @@ fetch("https://script.google.com/macros/s/AKfycbxAxvC2Bohl7MWwKHqzd9ArDtv-fcl4nq
         <div class="p-3 mb-3 rounded" style="background:#fff;">
           <strong>${item.nama}</strong><br>
           <span>${item.ucapan}</span><br>
-          <small>${item.hadir} - ${item.waktu}</small>
+          <small>${item.kehadiran} - ${item.waktu}</small>
         </div>
       `;
     });
