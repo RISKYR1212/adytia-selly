@@ -1,30 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const opening = document.getElementById("opening");
-  const main = document.getElementById("main");
-  const openBtn = document.getElementById("openBtn");
-  const weddingMusic = document.getElementById("bg-music");
 
-  /** ============ WEDDING WISH SUBMIT ============ **/
-document.getElementById("wishForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbzstQkc7TrpFejH_AcdoQlA1wvM3hrT9-4JpP-S-MnjFU_1-ar6s9PdRAEXLI2DSVboAw/exec";
 
-  const nama = document.getElementById("wish-name").value;
-  const ucapan = document.getElementById("wish-message").value;
-  const hadir = document.getElementById("wish-hadir").value;
+  /* =======================
+        SUBMIT FORM
+  ======================= */
+  document.getElementById("wishForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxAxvC2Bohl7MWwKHqzd9ArDtv-fcl4nq4JzyXaxPL6h8Mw-7VmVV7RUbUYyOrDOOUEfw/exec";
+    const nama = document.getElementById("nama").value.trim();
+    const ucapan = document.getElementById("ucapan").value.trim();
+    const kehadiran = document.getElementById("kehadiran").value;
 
-  await fetch(scriptURL, {
-    method: "POST",
-    body: new FormData(document.getElementById("wishForm"))
+    if (!nama || !ucapan || !kehadiran) {
+      alert("Mohon lengkapi semua data.");
+      return;
+    }
+
+    try {
+      const res = await fetch(GAS_URL, {
+        method: "POST",
+        body: JSON.stringify({ nama, ucapan, kehadiran })
+      });
+
+      const result = await res.json();
+
+      tambahBubble(nama, ucapan, kehadiran, result.waktu);
+
+      document.getElementById("wishForm").reset();
+
+    } catch (error) {
+      console.error("POST Error:", error);
+      alert("Gagal mengirim ucapan!");
+    }
   });
 
-  // reset form
-  document.getElementById("wishForm").reset();
+
+  /* =======================
+      TAMPILKAN DATA (GET)
+  ======================= */
+  function loadUcapan() {
+    fetch(GAS_URL)
+      .then(res => res.json())
+      .then(data => {
+        let container = document.getElementById("wishList");
+        container.innerHTML = "";
+
+        data.reverse().forEach(item => {
+          tambahBubble(item.nama, item.ucapan, item.kehadiran, item.waktu);
+        });
+      })
+      .catch(err => console.error("GET Error:", err));
+  }
+
+  loadUcapan();
+
+
+  /* =======================
+      TAMPILKAN BUBBLE BARU
+  ======================= */
+  function tambahBubble(nama, ucapan, kehadiran, waktu) {
+    const bubble = document.createElement("div");
+    bubble.className = "p-3 mb-3 rounded";
+    bubble.style.background = "#fff";
+    bubble.innerHTML = `
+      <strong>${nama}</strong><br>
+      <span>${ucapan}</span><br>
+      <small>${kehadiran} - ${waktu}</small>
+    `;
+    document.getElementById("wishList").prepend(bubble);
+  }
+
 });
 
-
-  /** OPENING BUTTON **/
+/* ============================================================
+      OPENING SCREEN
+  ============================================================ */
   openBtn.addEventListener("click", () => {
     opening.style.transition = "opacity 0.8s ease";
     opening.style.opacity = "0";
@@ -41,34 +92,34 @@ document.getElementById("wishForm").addEventListener("submit", async (e) => {
       startPetals();
       main.scrollIntoView({ behavior: "smooth" });
 
-      /** PLAY MUSIK **/
-      weddingMusic.play().catch(err => {
-        console.log("Autoplay error:", err);
-      });
+      weddingMusic.play().catch(err => console.log("Autoplay error:", err));
     }, 800);
   });
 
-  /** ========================
-   *  Fade + Slide Animation
-   * ======================== **/
+
+  /* ============================================================
+      Fade + Slide Animation
+  ============================================================ */
   function triggerAnimations() {
     document.querySelectorAll(".fade-slide").forEach((el, i) =>
       setTimeout(() => el.classList.add("show"), i * 200)
     );
   }
 
-  /** ========================
-   *  Parallax Effect
-   * ======================== **/
+
+  /* ============================================================
+      Parallax Effect
+  ============================================================ */
   window.addEventListener("scroll", () => {
     document.querySelectorAll(".parallax-img").forEach(img => {
       img.style.transform = `translateY(${window.scrollY * 0.25}px)`;
     });
   });
 
-  /** ========================
-   *  Falling Petals
-   * ======================== **/
+
+  /* ============================================================
+      Falling Petals Animation
+  ============================================================ */
   function startPetals() {
     const container = document.getElementById("petal-container");
     if (!container) return;
@@ -87,11 +138,13 @@ document.getElementById("wishForm").addEventListener("submit", async (e) => {
       container.appendChild(p);
     }
   }
-});
 
-/** ========================
- *  Open Location (Google Maps)
- * ======================== **/
+;
+
+
+/* ============================================================
+   OPEN GOOGLE MAPS
+============================================================ */
 function openLocation(url) {
-  window.open(url, '_blank'); // membuka lokasi di tab baru
+  window.open(url, "_blank");
 }

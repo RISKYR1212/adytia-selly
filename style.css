@@ -809,9 +809,163 @@ body {
   letter-spacing: 2px;
 }
 
-/* ===============================
-   FORM UCAPAN
-   =============================== */
+/* Font Premium */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@500;600&display=swap');
+
+/* Section */
+.wish-section {
+  width: 100%;
+  padding: 70px 20px;
+  background: #faf7f1;
+}
+
+.wish-title {
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #b88a19;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.wish-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.wish-form {
+  width: 420px;
+}
+
+.wish-card {
+  background: #fffdf9;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid rgba(184, 134, 11, 0.25);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.wish-input,
+.wish-textarea,
+.wish-select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e6d5bd;
+  margin-bottom: 16px;
+}
+
+.wish-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #cfa0ff, #a870ff);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* BUBBLE LIST */
+.wish-bubble-list {
+  width: 550px;
+  max-height: 700px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.bubble {
+  background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(197, 144, 10, 0.4);
+  box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+.bubble .name {
+  font-weight: bold;
+  color: #b88a19;
+  margin-bottom: 6px;
+}
+
+.bubble .message {
+  font-size: 15px;
+  color: #444;
+}
+.row-equal {
+    display: flex;
+    align-items: stretch;
+}
+
+.box-gold {
+    background: linear-gradient(180deg, #c99a29, #b88a19);
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.18);
+    padding: 25px;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* INPUT */
+.wish-input,
+.wish-textarea,
+.wish-select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e6d5bd;
+  margin-bottom: 18px;
+}
+
+.wish-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #d1a855, #b88a2b);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* LIST BUBBLE KANAN */
+.wish-bubble-list {
+  width: 550px;
+  max-height: 650px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* BUBBLE */
+.bubble {
+  background: white;
+  padding: 18px 22px;
+  border-radius: 15px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  border: 1px solid rgba(184, 134, 11, 0.35);
+  margin-bottom: 18px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .wish-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .wish-form,
+  .wish-bubble-list {
+    width: 100%;
+  }
+}
+
+
+
 
 .wish-form-box {
   max-width: 500px;
