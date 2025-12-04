@@ -1,7 +1,7 @@
 // ===============================================
 // KONFIGURASI
 // ===============================================
-const GAS_URL = "https://script.google.com/macros/s/AKfycbym4tW2SrFL8T-IDH70_TMHcUnxWve3zTfeiVVp6c2EqTmoRIt_jurpsAzasqxJ3Xgk0Q/exec"; // <--- ganti wajib
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxEivk56LHkyGF5K6z64t9Mx5BQMuG1E0g7sCtujCQ3lyiN26IMFvQHD4JNNnBCjATs-w/exec"; 
 
 
 // ===============================================
