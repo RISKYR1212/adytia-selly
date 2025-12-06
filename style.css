@@ -910,148 +910,6 @@ body {
     width: 100%;
     height: 100%;
 }
-  body {
-    font-family: "Poppins", sans-serif;
-    background: #f7f7f7;
-    margin: 0;
-    padding: 20px;
-  }
-
-  .card {
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
-    max-width: 500px;
-    margin: auto;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
-
-  input, textarea, select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  /* ================================
-   SECTION UCAPAN
-================================ */
-.wish-section {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-/* Title */
-.wish-title {
-  text-align: center;
-  font-size: 32px;
-  color: #b7893c;
-  font-weight: bold;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
-
-
-/* ================================
-   MASONRY GRID (2 kolom)
-================================ */
-.wish-masonry {
-  column-count: 2;
-  column-gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .wish-masonry {
-    column-count: 1;
-  }
-}
-
-/* ================================
-   CARD UCAPAN
-================================ */
-.wish-item-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-bottom: 20px;
-  display: inline-block;
-  width: 100%;
-  border-left: 6px solid #d4af37;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-  animation: fadeInUp 0.6s ease forwards;
-  opacity: 0;
-  transform: translateY(10px);
-  break-inside: avoid;
-}
-
-/* Hover efek halus */
-.wish-item-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
-}
-
-
-/* Nama */
-.wish-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 4px;
-}
-
-/* Ucapan */
-.wish-text {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-/* Kehadiran & Waktu */
-.wish-meta {
-  font-size: 13px;
-  color: #777;
-}
-
-
-/* ================================
-   ANIMASI
-================================ */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-  button {
-    background: #d4a94a;
-    border: none;
-    padding: 12px;
-    color: white;
-    width: 100%;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: 16px;
-  }
-
-  .wish-item {
-    background: white;
-    padding: 15px;
-    border-left: 4px solid #d4a94a;
-    border-radius: 6px;
-    margin-bottom: 12px;
-  }
-
-  #wish-list {
-    margin-top: 30px;
-  }
 
 
 
@@ -1432,12 +1290,6 @@ footer.footer {
     transform: scale(1.05) rotate(1deg);
     box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
-section.card-section {
-  padding-top: 170px !important;
-  margin-top: 0 !important;
-}
-
-
 
 /* =========================
    Countdown Scale Animation
@@ -1752,7 +1604,3 @@ section.card-section {
     50% { opacity: 0.6; transform: translateY(10px) scale(1.03); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
 }
-
-
-
-

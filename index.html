@@ -7,370 +7,390 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  
-
 </head>
 <body>
 
   <!-- Musik BG -->
-<audio id="bg-music" loop>
-  <source src="audio/save-and-sound.mp3" type="audio/mp3">
-</audio>
+  <audio id="bg-music" loop>
+    <source src="audio/save-and-sound.mp3" type="audio/mp3">
+  </audio>
 
-<!-- Tombol Musik -->
-<div id="music-btn" class="music-btn">
-  🎵
-</div>
+  <!-- Tombol Musik -->
+  <div id="music-btn" class="music-btn">🎵</div>
 
-<script>
-  const music = document.getElementById("bg-music");
-  const btn = document.getElementById("music-btn");
+  <script>
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+    let isPlaying = false;
+    btn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        btn.classList.remove("active");
+      } else {
+        music.play();
+        btn.classList.add("active");
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
 
-  let isPlaying = false;
+  <!-- OPENING -->
+  <section id="opening" class="opening">
+    <img src="img/bg-prewed.jpg" class="opening-bg" alt="bg">
+    <div class="opening-overlay"></div>
+    <div class="opening-content fade-in">
+      <p class="sub">THE WEDDING OF</p>
+      <h1 class="title">ADITYA & SELLYA</h1>
+      <button id="openBtn" class="open-btn">Buka Undangan</button>
+    </div>
+  </section>
 
-  btn.addEventListener("click", () => {
-    if (isPlaying) {
-      music.pause();
-      btn.classList.remove("active");
-    } else {
-      music.play();
-      btn.classList.add("active");
+  <!-- MAIN CONTENT -->
+  <main id="main" class="hidden">
+
+    <!-- PARALLAX / PETALS CONTAINER -->
+    <section id="bride-groom-section" class="parallax-section">
+      <div class="overlay"></div>
+      <div class="content">
+        <div id="petal-container"></div>
+      </div>
+    </section>
+
+    <!-- BRIDE & GROOM -->
+    <section class="section fade-slide card-section">
+      <h2 class="section-title">Bride & Groom</h2>
+      <p class="section-text">
+        Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh,
+        <br>pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+        <br><strong>QS. Ar-Rum Ayat 21</strong>
+      </p>
+    </section>
+
+    <section id="bride-groom" class="bride-groom fade-slide">
+      <div class="bg-grid">
+        <!-- Bride -->
+        <div class="person fade-slide">
+          <div class="photo-frame fade-slide">
+            <img src="img/selly.jpg" class="portrait-photo" alt="selly">
+          </div>
+          <h2 class="couple-name fade-slide">SELLYA</h2>
+          <p class="desc fade-slide">Sellya Amanda Herlita<br>Putri pertama dari Bapak Didi & Ibu Eneng Herlinda (almh)</p>
+        </div>
+
+        <div class="heart fade-slide">❤</div>
+
+        <!-- Groom -->
+        <div class="person fade-slide">
+          <div class="photo-frame fade-slide">
+            <img src="img/adit.jpg" class="portrait-photo" alt="adit">
+          </div>
+          <h2 class="couple-name fade-slide">ADIT</h2>
+          <p class="desc fade-slide">Adytia Fadlillah<br>Putra Kedua dari Bapak Muhamad Rokip & Ibu Kholidah</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section fade-slide">
+      <img src="img/bg-prewed.jpg" class="countdown-bg" alt="countdown">
+      <div class="countdown-overlay"></div>
+      <div class="countdown-content">
+        <h2 class="countdown-title">Countdown Time</h2>
+        <div class="countdown-wrapper">
+          <div class="cd-box"><span id="days">0</span><p>Hari</p></div>
+          <div class="cd-box"><span id="hours">0</span><p>Jam</p></div>
+          <div class="cd-box"><span id="minutes">0</span><p>Menit</p></div>
+          <div class="cd-box"><span id="seconds">0</span><p>Detik</p></div>
+        </div>
+        <button class="save-btn">Save The Date</button>
+      </div>
+    </section>
+
+    <!-- JADWAL -->
+    <section id="jadwal" class="jadwal-section">
+      <div class="jadwal-card">
+        <h2 class="judul">Akad Nikah</h2>
+        <div class="tanggal-box">
+          <span class="hari">Sabtu</span>
+          <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
+          <span class="tahun">2026</span>
+        </div>
+        <p class="waktu">PUKUL 08.30 WIB - 11:00</p>
+        <div class="lokasi">
+          <h4>LOKASI</h4>
+          <p>Alamat Akad Nikah</p>
+          <a href="https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw" target="_blank" class="btn-maps">Lihat di Maps</a>
+        </div>
+      </div>
+
+      <div class="jadwal-card">
+        <h2 class="judul">Resepsi</h2>
+        <div class="tanggal-box">
+          <span class="hari">Sabtu</span>
+          <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
+          <span class="tahun">2026</span>
+        </div>
+        <p class="waktu">PUKUL 11.00 WIB - SELESAI</p>
+        <div class="lokasi">
+          <h4>LOKASI</h4>
+          <p>Kediaman Mempelai Wanita</p>
+          <a href="https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw" target="_blank" class="btn-maps">Lihat di Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section fade-slide card-section">
+      <h2 class="section-title">GALLERY</h2>
+      <div class="gallery">
+        <img src="img/foto 1 adit.jpg" alt="g1">
+        <img src="img/adit.jpg" alt="g2">
+        <img src="img/selly.jpg" alt="g3">
+        <img src="img/foto 2 adit.jpg" alt="g4">
+        <img src="img/foto 3 adit.jpg" alt="g5">
+        <img src="img/foto 4 adit.jpg" alt="g6">
+      </div>
+    </section>
+
+    <!-- WEDDING GIFT BUTTON -->
+    <section class="section">
+      <button class="gift-btn" onclick="openGiftModal()">Wedding Gift</button>
+    </section>
+
+    <!-- MODAL GIFT -->
+    <div id="giftModal" class="gift-modal-overlay">
+      <div class="gift-modal-box">
+        <span class="gift-close" onclick="closeGiftModal()">✖</span>
+        <h2 class="gift-modal-title">Wedding Gift</h2>
+        <div class="gift-modal-grid">
+          <div class="gift-modal-card">
+            <div class="gift-top">
+              <span class="bank-name">BANK MANDIRI</span>
+              <img src="img/bank.jpg" class="bank-logo" alt="bank">
+            </div>
+            <p class="label">Nomor Rekening</p>
+            <div class="flex-row"><span class="rekening">1330025558958</span>
+              <button class="btn-salin" onclick="copyText('1330025558958')">📋 Salin</button>
+            </div>
+            <p class="label">Atas Nama</p>
+            <p class="nama">SELLY AMANDA HERLITA</p>
+          </div>
+          <div class="gift-modal-card">
+            <div class="gift-top">
+              <span class="bank-name">BANK BRI</span>
+              <img src="img/bank.jpg" class="bank-logo" alt="bank">
+            </div>
+            <p class="label">Nomor Rekening</p>
+            <div class="flex-row"><span class="rekening">038401044654502</span>
+              <button class="btn-salin" onclick="copyText('038401044654502')">📋 Salin</button>
+            </div>
+            <p class="label">Atas Nama</p>
+            <p class="nama">ADYTIA FADLILLAH</p>
+          </div>
+        </div>
+        <div class="gift-modal-card wide">
+          <div class="gift-icon">🎁</div>
+          <div><p class="nama">SELLYA</p><p class="alamat">Kp. Nyangkokot Gunung Sari Kec Citeureup RT3/05</p></div>
+        </div>
+        <button class="btn-konfirmasi">Konfirmasi</button>
+      </div>
+    </div>
+
+    <!-- WEDDING WISH -->
+    <div class="container py-5">
+      <div class="row row-equal justify-content-center g-5">
+
+        <!-- KOTAK KIRI – FORM -->
+        <div class="col-12 col-md-5">
+          <div class="box-gold p-4">
+            <h4 class="text-center mb-4">Wedding Wish</h4>
+
+            <form id="wishForm">
+
+              <div class="mb-3">
+                <label class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" placeholder="Nama Anda" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Ucapan</label>
+                <textarea class="form-control" id="ucapan" rows="4" placeholder="Tulis ucapan terbaik..." required></textarea>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Kehadiran</label>
+                <select class="form-select" id="kehadiran" required>
+                  <option value="">Pilih konfirmasi</option>
+                  <option value="Hadir">Hadir</option>
+                  <option value="Tidak Hadir">Tidak Hadir</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-dark w-100">Kirim Ucapan</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- KOTAK KANAN – HASIL UCAPAN -->
+        <div class="col-12 col-md-5">
+          <div class="box-gold p-4">
+            <h4 class="text-center mb-4">Ucapan Masuk</h4>
+            <div id="wishList" style="max-height: 270px; overflow-y: auto;">
+              <!-- daftar ucapan -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <section class="closing">
+      <img src="img/foto 1 adit.jpg" class="closing-bg-blur" alt="closing">
+      <img src="img/foto 1 adit.jpg" class="closing-bg" alt="closing">
+      <div class="closing-overlay"></div>
+      <div class="closing-content">
+        <h2 class="closing-title">Terima Kasih</h2>
+        <p class="closing-text">Merupakan suatu kehormatan dan 
+          kebahagiaan<br> bagi kami 
+          <b>apabila Bapak/Ibu/Saudara/i <br>berkenan hadir
+             dan memberikan do'a <br>restunya.</p>
+        <p class="closing-sub">Kami yang berbahagia,</p>
+        <h3 class="closing-names">ADYTIA & SELLYA</h3>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // OPENING
+    const openBtn = document.getElementById('openBtn');
+    const mainContent = document.getElementById('main');
+    const opening = document.getElementById('opening');
+    openBtn.addEventListener('click', () => {
+      opening.classList.add('hidden');
+      mainContent.classList.remove('hidden');
+      triggerAnimations();
+    });
+
+    // PARALLAX / FADE SLIDE
+    function triggerAnimations() {
+      const fadeEls = document.querySelectorAll('.fade-slide');
+      fadeEls.forEach((el, i) => {
+        setTimeout(() => el.classList.add('show'), i * 200);
+      });
+      const parallaxImgs = document.querySelectorAll('.parallax-img');
+      parallaxImgs.forEach((el, i) => {
+        setTimeout(() => el.classList.add('show'), i * 300);
+      });
     }
-    isPlaying = !isPlaying;
-  });
-</script>
 
+    // GIFT MODAL
+    function openGiftModal() {
+      document.getElementById('giftModal').classList.add('show');
+    }
+    function closeGiftModal() {
+      document.getElementById('giftModal').classList.remove('show');
+    }
 
+    // COPY REKENING
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Nomor rekening disalin: ' + text);
+      });
+    }
 
-<!-- OPENING -->
-<section id="opening" class="opening">
-  <img src="img/bg-prewed.jpg" class="opening-bg">
-  <div class="opening-overlay"></div>
-  <div class="opening-content fade-in">
-    <p class="sub">THE WEDDING OF</p>
-    <h1 class="title">ADITYA & SELLYA</h1>
-    <button id="openBtn" class="open-btn">Buka Undangan</button>
-  </div>
-</section>
+    // COUNTDOWN
+    const weddingDate = new Date('January 3, 2026 08:30:00').getTime();
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
 
-<!-- MAIN CONTENT -->
-<main id="main" class="hidden">
-  <!-- PARALLAX -->
-  <section id="bride-groom-section" class="parallax-section">
-  <div class="overlay"></div>
-  <div class="content">
-    <!-- <h2>Bride & Groom</h2>
-    <p>Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan...</p>
-    <div id="bride-groom" class="bg-grid">
-      <!-- Bride -->
-      <!-- <div class="person">
-        <div class="photo-frame"><img src="img/selly.jpg" class="portrait-photo"></div> --> 
-        <!-- <h2 class="person-name">SELLYA</h2>
-        <p class="person-desc">Putri pertama dari Bapak Didi & Ibu Neneng</p>
-      </div>
-      <div id="petal-container"></div>
-  </section>
-</div>
-      <div class="heart">❤</div> -->
-      <!-- Groom -->
-      <!-- <div class="person"> -->
-        <!-- <div class="photo-frame"><img src="img/adit.jpg" class="portrait-photo"></div>
-        <h2 class="person-name">ADIT</h2>
-        <p class="person-desc">Putra Kedua dari Bapak Muhamad Rokip & Ibu Kholidah</p> -->
-      <!-- </div>
-    </div>
-  </div> -->
-  <div id="petal-container"></div>
-  </section>
-</div>
-</section>
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
 
+      const days = Math.max(0, Math.floor(distance / (1000*60*60*24)));
+      const hours = Math.max(0, Math.floor((distance % (1000*60*60*24)) / (1000*60*60)));
+      const minutes = Math.max(0, Math.floor((distance % (1000*60*60)) / (1000*60)));
+      const seconds = Math.max(0, Math.floor((distance % (1000*60)) / 1000));
 
-  <!-- BRIDE & GROOM -->
-  <section class="section fade-slide card-section">
-    <h2 class="section-title">Bride & Groom</h2>
-    <p class="section-text">
-      Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh,
-      <br>pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
-      <br><strong>QS. Ar-Rum Ayat 21</strong>
-    </p>
-  </section>
+      daysEl.innerText = days;
+      hoursEl.innerText = hours;
+      minutesEl.innerText = minutes;
+      secondsEl.innerText = seconds;
+    }, 1000);
 
-  <section id="bride-groom" class="bride-groom fade-slide">
-    <div class="bg-grid">
-      <!-- Bride -->
-      <div class="person fade-slide">
-        <div class="photo-frame fade-slide">
-          <img src="img/selly.jpg" class="portrait-photo">
-        </div>
-        <h2 class="couple-name fade-slide">SELLYA</h2>
-        <p class="desc fade-slide">Sellya Amanda Herlita<br>Putri pertama dari Bapak Didi & Ibu Eneng Herlinda (almh)</p>
-      </div>
+    // WEDDING WISH (GET + POST to Google Apps Script)
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbycALvW0fK60fOj0QFgenQpw3wiUoD28vymNN5YR4k9S5OuiFLKxHdDq52MlR8nKqOuGg/exec";
 
-      <div class="heart fade-slide">❤</div>
+    document.addEventListener('DOMContentLoaded', () => {
+      // load ucapan
+      fetchUcapan();
 
-      <!-- Groom -->
-      <div class="person fade-slide">
-        <div class="photo-frame fade-slide">
-          <img src="img/adit.jpg" class="portrait-photo">
-        </div>
-        <h2 class="couple-name fade-slide">ADIT</h2>
-        <p class="desc fade-slide">Adytia Fadlillah<br>Putra Kedua dari Bapak Muhamad Rokip & Ibu Kholidah</p>
-      </div>
-    </div>
-  </section>
+      // submit handler
+      const wishForm = document.getElementById('wishForm');
+      wishForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nama = document.getElementById('nama').value.trim();
+        const ucapan = document.getElementById('ucapan').value.trim();
+        const kehadiran = document.getElementById('kehadiran').value;
+        if(!nama || !ucapan) return alert('Nama dan ucapan harus diisi');
 
-  <!-- PARALLAX -->
-  <!-- <section class="parallax">
-    <img src="img/bg-prewed.jpg" class="parallax-img">
-  </section> -->
+        try {
+          const res = await fetch(GAS_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nama, ucapan, kehadiran })
+          });
+          const json = await res.json();
+          // optional: show success
+          alert('Ucapan berhasil dikirim!');
+          wishForm.reset();
+          fetchUcapan();
+        } catch (err) {
+          console.error('ERROR POST:', err);
+          alert('Gagal mengirim ucapan!');
+        }
+      });
+    });
 
-  <!-- COUNTDOWN -->
-  <section class="countdown-section fade-slide">
-    <img src="img/bg-prewed.jpg" class="countdown-bg">
-    <div class="countdown-overlay"></div>
-    <div class="countdown-content">
-      <h2 class="countdown-title">Countdown Time</h2>
-      <div class="countdown-wrapper">
-        <div class="cd-box"><span id="days">0</span><p>Hari</p></div>
-        <div class="cd-box"><span id="hours">0</span><p>Jam</p></div>
-        <div class="cd-box"><span id="minutes">0</span><p>Menit</p></div>
-        <div class="cd-box"><span id="seconds">0</span><p>Detik</p></div>
-      </div>
-      <button class="save-btn">Save The Date</button>
-    </div>
-  </section>
+    async function fetchUcapan(){
+      try{
+        const res = await fetch(GAS_URL + '?mode=read');
+        const data = await res.json();
+        const box = document.getElementById('wishList');
+        box.innerHTML = '';
+        // show latest first
+        data.reverse().forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'p-3 mb-3 rounded';
+          div.style.background = '#fff';
+          div.innerHTML = `
+            <strong>${escapeHtml(item.nama || '')}</strong><br>
+            <span>${escapeHtml(item.ucapan || '')}</span><br>
+            <small>${escapeHtml(item.kehadiran || '')} - ${escapeHtml(item.waktu || '')}</small>
+          `;
+          box.appendChild(div);
+        });
+      }catch(e){
+        console.error('ERROR GET:', e);
+      }
+    }
 
-  <!-- JADWAL -->
-<section id="jadwal" class="jadwal-section">
-  <div class="jadwal-card">
-    <h2 class="judul">Akad Nikah</h2>
-    <div class="tanggal-box">
-      <span class="hari">Sabtu</span>
-      <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
-      <span class="tahun">2026</span>
-    </div>
-    <p class="waktu">PUKUL 08.30 WIB - 11:00</p>
-    <div class="lokasi">
-      <h4>LOKASI</h4>
-      <p>Alamat Akad Nikah</p>
-      <a href="https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw" target="_blank" class="btn-maps">Lihat di Maps</a>
-    </div>
-  </div>
+    // simple html escape
+    function escapeHtml(unsafe){
+      return (unsafe+'')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
 
-  <div class="jadwal-card">
-    <h2 class="judul">Resepsi</h2>
-    <div class="tanggal-box">
-      <span class="hari">Sabtu</span>
-      <div class="tanggal"><h3>03</h3><p>JANUARY</p></div>
-      <span class="tahun">2026</span>
-    </div>
-    <p class="waktu">PUKUL 11.00 WIB - SELESAI</p>
-    <div class="lokasi">
-      <h4>LOKASI</h4>
-      <p>Kediaman Mempelai Wanita</p>
-      <a href="https://maps.app.goo.gl/YKP26xxGLwriXBP8A?g_st=aw" target="_blank" class="btn-maps">Lihat di Maps</a>
-    </div>
-  </div>
-</section>
-
-
-  <!-- GALLERY -->
-  <section class="section fade-slide card-section">
-    <h2 class="section-title">GALLERY</h2>
-    <div class="gallery">
-      <img src="img/foto 1 adit.jpg">
-      <img src="img/adit.jpg">
-      <img src="img/selly.jpg">
-      <img src="img/foto 2 adit.jpg">
-      <img src="img/foto 3 adit.jpg">
-      <img src="img/foto 4 adit.jpg">
-    </div>
-  </section>
-
-  <!-- WEDDING GIFT BUTTON -->
-  <section class="section">
-    <button class="gift-btn" onclick="openGiftModal()">Wedding Gift</button>
-  </section>
-
-  <!-- MODAL GIFT -->
-  <div id="giftModal" class="gift-modal-overlay">
-    <div class="gift-modal-box">
-      <span class="gift-close" onclick="closeGiftModal()">✖</span>
-      <h2 class="gift-modal-title">Wedding Gift</h2>
-      <div class="gift-modal-grid">
-        <div class="gift-modal-card">
-          <div class="gift-top">
-            <span class="bank-name">BANK MANDIRI</span>
-            <img src="img/bank.jpg" class="bank-logo">
-          </div>
-          <p class="label">Nomor Rekening</p>
-          <div class="flex-row"><span class="rekening">1330025558958</span>
-            <button class="btn-salin" onclick="copyText('1330025558958')">📋 Salin</button>
-          </div>
-          <p class="label">Atas Nama</p>
-          <p class="nama">SELLY AMANDA HERLITA</p>
-        </div>
-        <div class="gift-modal-card">
-          <div class="gift-top">
-            <span class="bank-name">BANK BRI</span>
-            <img src="img/bank.jpg" class="bank-logo">
-          </div>
-          <p class="label">Nomor Rekening</p>
-          <div class="flex-row"><span class="rekening">038401044654502</span>
-            <button class="btn-salin" onclick="copyText('038401044654502')">📋 Salin</button>
-          </div>
-          <p class="label">Atas Nama</p>
-          <p class="nama">ADYTIA FADLILLAH</p>
-        </div>
-      </div>
-      <div class="gift-modal-card wide">
-        <div class="gift-icon">🎁</div>
-        <div><p class="nama">SELLYA</p><p class="alamat">Kp. Nyangkokot Gunung Sari Kec Citeureup RT3/05</p></div>
-      </div>
-      <button class="btn-konfirmasi">Konfirmasi</button>
-    </div>
-  </div>
-
-      <!-- WEDDING WISH -->
-<div class="card">
-  <h2>Buku Tamu</h2>
-
-  <form id="wishForm">
-    <label>Nama</label>
-    <input type="text" id="wish-name" required>
-
-    <label>Ucapan</label>
-    <textarea id="wish-message" required></textarea>
-
-    <label>Kehadiran</label>
-    <select id="wish-kehadiran">
-      <option value="Hadir">Hadir</option>
-      <option value="Tidak Hadir">Tidak Hadir</option>
-    </select>
-
-    <button type="submit">Kirim</button>
-  </form>
-</div>
-
-<h3 style="text-align:center;margin-top:40px">Ucapan Tamu</h3>
-
-<section class="wish-section">
-  <h2 class="wish-title">Ucapan Tamu</h2>
-
-  <!-- Container untuk efek masonry -->
-  <div id="wish-list" class="wish-masonry">
-    <!-- Card di-render otomatis oleh app.js -->
-  </div>
-</section>
-
-
-<div id="wish-list"></div>
-
-      <!-- CLOSING -->
-  <section class="closing">
-    <img src="img/foto 1 adit.jpg" class="closing-bg-blur">
-    <img src="img/foto 1 adit.jpg" class="closing-bg">
-    <div class="closing-overlay"></div>
-    <div class="closing-content">
-      <h2 class="closing-title">Terima Kasih</h2>
-      <p class="closing-text">Merupakan suatu kehormatan dan 
-        kebahagiaan<br> bagi kami 
-        <b>apabila Bapak/Ibu/Saudara/i <br>berkenan hadir
-           dan memberikan do'a <br>restunya.</p>
-      <p class="closing-sub">Kami yang berbahagia,</p>
-      <h3 class="closing-names">ADYTIA & SELLYA</h3>
-    </div>
-  </section>
-
-</main>
-
-<script>
-// OPENING
-const openBtn = document.getElementById('openBtn');
-const mainContent = document.getElementById('main');
-const opening = document.getElementById('opening');
-openBtn.addEventListener('click', () => {
-  opening.classList.add('hidden');
-  mainContent.classList.remove('hidden');
-  triggerAnimations();
-});
-
-
-// PARALLAX / FADE SLIDE
-function triggerAnimations() {
-  const fadeEls = document.querySelectorAll('.fade-slide');
-  fadeEls.forEach((el, i) => {
-    setTimeout(() => el.classList.add('show'), i * 200);
-  });
-  const parallaxImgs = document.querySelectorAll('.parallax-img');
-  parallaxImgs.forEach((el, i) => {
-    setTimeout(() => el.classList.add('show'), i * 300);
-  });
-}
-
-// GIFT MODAL
-function openGiftModal() {
-  document.getElementById('giftModal').classList.add('show');
-}
-function closeGiftModal() {
-  document.getElementById('giftModal').classList.remove('show');
-}
-
-// COPY REKENING
-function copyText(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Nomor rekening disalin: ' + text);
-  });
-}
-
-// COUNTDOWN
-const weddingDate = new Date('January 3, 2026 08:30:00').getTime();
-const daysEl = document.getElementById('days');
-const hoursEl = document.getElementById('hours');
-const minutesEl = document.getElementById('minutes');
-const secondsEl = document.getElementById('seconds');
-
-setInterval(() => {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-  daysEl.innerText = days;
-  hoursEl.innerText = hours;
-  minutesEl.innerText = minutes;
-  secondsEl.innerText = seconds;
-}, 1000);
-
-// WEDDING WISH
-const sendBtn = document.getElementById('sendWishBtn');
-const wishList = document.getElementById('wishList');
-const wishName = document.getElementById('wish-name');
-const wishMessage = document.getElementById('wish-message');
-const wishFeedback = document.getElementById('wishFeedback');
-
-sendBtn.addEventListener('click', () => {
-  const name = wishName.value.trim();
-  const message = wishMessage.value.trim();
-  if(!name || !message){
-    wishFeedback.innerText = "Nama dan ucapan harus diisi!";
-    return;
-  }
-  const card = document.createElement('div');
-  card.classList.add('wish-card');
-  card.innerHTML = `<h4>${name}</h4><p>${message}</p>`;
-  wishList.prepend(card);
-  wishName.value = '';
-  wishMessage.value = '';
-  wishFeedback.innerText = 'Ucapan berhasil dikirim!';
-});
-</script>
-<script src="app.js"></script>
-
-
+  </script>
+  <script src="app.js"></script>
 </body>
 </html>
+  
