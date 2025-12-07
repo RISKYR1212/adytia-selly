@@ -1,99 +1,96 @@
-// URL Google Apps Script kamu
+// ========================================
+// URL GOOGLE APPS SCRIPT
+// ========================================
 const GAS_URL = "https://script.google.com/macros/s/AKfycbwPfsyUV4JlaL05_u1ZPoknGvLPM_kLVUZ9Ioe_opnZhlOzy7SkIMDo4H4NDv5dA8Vvrg/exec";
 
-// ===================================================
-// KIRIM DATA KE GOOGLE SHEET
-// ===================================================
-function kirimUcapan(data) {
+
+// ========================================
+// KIRIM UCAPAN
+// ========================================
+async function kirimUcapan(data) {
   const formData = new FormData();
   formData.append("nama", data.nama);
   formData.append("ucapan", data.ucapan);
   formData.append("kehadiran", data.kehadiran);
 
-  fetch(GAS_URL, {
-    method: "POST",
-    body: formData
-  })
-    .then(res => res.json())
-    .then(r => console.log("POST OK:", r))
-    .catch(err => console.error("POST ERROR:", err));
+  try {
+    const res = await fetch(GAS_URL, {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await res.json();
+    console.log("POST OK:", result);
+    alert("Ucapan berhasil dikirim!");
+
+  } catch (err) {
+    console.error("POST ERROR:", err);
+    alert("Gagal mengirim ucapan!");
+  }
 }
 
 
+// ========================================
+// AMBIL UCAPAN
+// ========================================
+async function ambilUcapan() {
+  try {
+    const res = await fetch(GAS_URL + "?mode=read");
 
-// ===================================================
-// AMBIL DATA DARI SHEET
-// ===================================================
-function ambilUcapan() {
-  fetch(GAS_URL)
-    .then(res => res.json())
-    .then(data => {
-      renderUcapan(data);
-    })
-    .catch(err => console.error("GET ERROR:", err));
+    const data = await res.json();
+    renderUcapan(data);
+
+  } catch (err) {
+    console.error("GET ERROR:", err);
+  }
 }
 
 
-
-// ===================================================
-// RENDER DATA KE HTML
-// ===================================================
+// ========================================
+// TAMPILKAN DATA
+// ========================================
 function renderUcapan(list) {
   const box = document.getElementById("wish-list");
-
-  if (!box) {
-    console.error("Element #wish-list tidak ditemukan!");
-    return;
-  }
-
   box.innerHTML = "";
 
   list.forEach(item => {
-    const bubble = `
-      <div class="wish-item p-3 mb-3 rounded" style="background:#fff;">
+    box.innerHTML += `
+      <div class="wish-item">
         <strong>${item.nama}</strong><br>
         ${item.ucapan}<br>
         <small>${item.kehadiran} • ${item.waktu}</small>
       </div>
     `;
-    box.innerHTML += bubble;
   });
 }
 
 
-
-// ===================================================
-// DOM Loaded
-// ===================================================
+// ========================================
+// FORM SUBMIT
+// ========================================
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ============================
-     FORM HANDLER
-  ============================ */
   const form = document.getElementById("wishForm");
 
-  if (form) {
-    form.addEventListener("submit", e => {
-      e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const data = {
-        nama: document.getElementById("wish-name").value.trim(),
-        ucapan: document.getElementById("wish-message").value.trim(),
-        kehadiran: document.getElementById("wish-kehadiran").value,
-      };
+    const data = {
+      nama: document.getElementById("wish-name").value.trim(),
+      ucapan: document.getElementById("wish-message").value.trim(),
+      kehadiran: document.getElementById("wish-kehadiran").value
+    };
 
-      if (!data.nama || !data.ucapan) {
-        alert("Nama & ucapan harus diisi!");
-        return;
-      }
+    if (!data.nama || !data.ucapan) {
+      alert("Nama & ucapan wajib diisi!");
+      return;
+    }
 
-      kirimUcapan(data);
+    await kirimUcapan(data);
+    form.reset();
 
-      form.reset();
-
-      setTimeout(ambilUcapan, 800);
-    });
-  }
+    setTimeout(ambilUcapan, 800);
+  });
 
   ambilUcapan();
 });
