@@ -262,134 +262,70 @@
 
   </main>
 
-  <script>
-    // OPENING
-    const openBtn = document.getElementById('openBtn');
-    const mainContent = document.getElementById('main');
-    const opening = document.getElementById('opening');
-    openBtn.addEventListener('click', () => {
-      opening.classList.add('hidden');
-      mainContent.classList.remove('hidden');
-      triggerAnimations();
-    });
-
-    // PARALLAX / FADE SLIDE
-    function triggerAnimations() {
-      const fadeEls = document.querySelectorAll('.fade-slide');
-      fadeEls.forEach((el, i) => {
-        setTimeout(() => el.classList.add('show'), i * 200);
+      <!-- SCRIPT UTAMA -->
+    <script>
+      // OPENING
+      const openBtn = document.getElementById('openBtn');
+      const mainContent = document.getElementById('main');
+      const opening = document.getElementById('opening');
+      openBtn.addEventListener('click', () => {
+        opening.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+        triggerAnimations();
       });
-      const parallaxImgs = document.querySelectorAll('.parallax-img');
-      parallaxImgs.forEach((el, i) => {
-        setTimeout(() => el.classList.add('show'), i * 300);
-      });
-    }
 
-    // GIFT MODAL
-    function openGiftModal() {
-      document.getElementById('giftModal').classList.add('show');
-    }
-    function closeGiftModal() {
-      document.getElementById('giftModal').classList.remove('show');
-    }
-
-    // COPY REKENING
-    function copyText(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Nomor rekening disalin: ' + text);
-      });
-    }
-
-    // COUNTDOWN
-    const weddingDate = new Date('January 3, 2026 08:30:00').getTime();
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-
-      const days = Math.max(0, Math.floor(distance / (1000*60*60*24)));
-      const hours = Math.max(0, Math.floor((distance % (1000*60*60*24)) / (1000*60*60)));
-      const minutes = Math.max(0, Math.floor((distance % (1000*60*60)) / (1000*60)));
-      const seconds = Math.max(0, Math.floor((distance % (1000*60)) / 1000));
-
-      daysEl.innerText = days;
-      hoursEl.innerText = hours;
-      minutesEl.innerText = minutes;
-      secondsEl.innerText = seconds;
-    }, 1000);
-
-    <!-- <!-- // WEDDING WISH (GET + POST to Google Apps Script) -->
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbycALvW0fK60fOj0QFgenQpw3wiUoD28vymNN5YR4k9S5OuiFLKxHdDq52MlR8nKqOuGg/exec";
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // load ucapan
-      fetchUcapan();
-
-      // submit handler
-      const wishForm = document.getElementById('wishForm');
-      wishForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const nama = document.getElementById('nama').value.trim();
-        const ucapan = document.getElementById('ucapan').value.trim();
-        const kehadiran = document.getElementById('kehadiran').value;
-        if(!nama || !ucapan) return alert('Nama dan ucapan harus diisi');
-
-        try {
-          const res = await fetch(GAS_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nama, ucapan, kehadiran })
-          });
-          const json = await res.json();
-          // optional: show success
-          alert('Ucapan berhasil dikirim!');
-          wishForm.reset();
-          fetchUcapan();
-        } catch (err) {
-          console.error('ERROR POST:', err);
-          alert('Gagal mengirim ucapan!');
-        }
-      });
-    });
-
-    async function fetchUcapan(){
-      try{
-        const res = await fetch(GAS_URL + '?mode=read');
-        const data = await res.json();
-        const box = document.getElementById('wishList');
-        box.innerHTML = '';
-        // show latest first
-        data.reverse().forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'p-3 mb-3 rounded';
-          div.style.background = '#fff';
-          div.innerHTML = `
-            <strong>${escapeHtml(item.nama || '')}</strong><br>
-            <span>${escapeHtml(item.ucapan || '')}</span><br>
-            <small>${escapeHtml(item.kehadiran || '')} - ${escapeHtml(item.waktu || '')}</small>
-          `;
-          box.appendChild(div);
+      // PARALLAX / FADE SLIDE
+      function triggerAnimations() {
+        const fadeEls = document.querySelectorAll('.fade-slide');
+        fadeEls.forEach((el, i) => {
+          setTimeout(() => el.classList.add('show'), i * 200);
         });
-      }catch(e){
-        console.error('ERROR GET:', e);
+
+        const parallaxImgs = document.querySelectorAll('.parallax-img');
+        parallaxImgs.forEach((el, i) => {
+          setTimeout(() => el.classList.add('show'), i * 300);
+        });
       }
-    }
 
-    // simple html escape
-    function escapeHtml(unsafe){
-      return (unsafe+'')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
+      // GIFT MODAL
+      function openGiftModal() {
+        document.getElementById('giftModal').classList.add('show');
+      }
+      function closeGiftModal() {
+        document.getElementById('giftModal').classList.remove('show');
+      }
 
-  </script> -->
-  <script src="app.js"></script>
+      // COPY REKENING
+      function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Nomor rekening disalin: ' + text);
+        });
+      }
+
+      // COUNTDOWN
+      const weddingDate = new Date('January 3, 2026 08:30:00').getTime();
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.max(0, Math.floor(distance / (1000*60*60*24)));
+        const hours = Math.max(0, Math.floor((distance % (1000*60*60*24)) / (1000*60*60)));
+        const minutes = Math.max(0, Math.floor((distance % (1000*60*60)) / (1000*60)));
+        const seconds = Math.max(0, Math.floor((distance % (1000*60)) / 1000));
+
+        daysEl.innerText = days;
+        hoursEl.innerText = hours;
+        minutesEl.innerText = minutes;
+        secondsEl.innerText = seconds;
+      }, 1000);
+    </script>
+
+    <!-- EXTERNAL JS -->
+    <script src="app.js"></script>
 </body>
 </html>
