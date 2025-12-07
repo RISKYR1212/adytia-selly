@@ -1,5 +1,5 @@
 // URL Google Apps Script kamu
-const GAS_URL = "https://script.google.com/macros/s/AKfycbz4CrzLl7Yk7_-ofXoCxF650SNvEjQMc-nMVnNr5jtR8bW9DRk081v__1bta6PmujU9Wg/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbwPfsyUV4JlaL05_u1ZPoknGvLPM_kLVUZ9Ioe_opnZhlOzy7SkIMDo4H4NDv5dA8Vvrg/exec";
 
 // ===================================================
 // KIRIM DATA KE GOOGLE SHEET
