@@ -36,8 +36,13 @@ async function kirimUcapan(data) {
 async function ambilUcapan() {
   try {
     const res = await fetch(GAS_URL);
-
     const data = await res.json();
+
+    if (!Array.isArray(data)) {
+      console.error("FORMAT SALAH:", data);
+      return;
+    }
+
     renderUcapan(data);
 
   } catch (err) {
@@ -46,16 +51,17 @@ async function ambilUcapan() {
 }
 
 
+
 // ========================================
 // TAMPILKAN DATA
 // ========================================
 function renderUcapan(list) {
-  const box = document.getElementById("wish-list");
+  const box = document.getElementById("wishList"); // <- SUDAH BENAR
   box.innerHTML = "";
 
   list.forEach(item => {
     box.innerHTML += `
-      <div class="wish-item">
+      <div class="wish-item mb-3 p-2" style="border-bottom:1px solid #fff3;">
         <strong>${item.nama}</strong><br>
         ${item.ucapan}<br>
         <small>${item.kehadiran} • ${item.waktu}</small>
@@ -63,6 +69,7 @@ function renderUcapan(list) {
     `;
   });
 }
+
 
 
 // ========================================
