@@ -153,48 +153,62 @@
     </section>
 
     <!-- WEDDING GIFT BUTTON -->
-    <section class="section">
-      <button class="gift-btn" onclick="openGiftModal()">Wedding Gift</button>
-    </section>
+<section class="gift-container">
+  <button class="gift-btn" onclick="openGiftModal()">Wedding Gift</button>
+</section>
 
-    <!-- MODAL GIFT -->
-    <div id="giftModal" class="gift-modal-overlay">
-      <div class="gift-modal-box">
-        <span class="gift-close" onclick="closeGiftModal()">✖</span>
-        <h2 class="gift-modal-title">Wedding Gift</h2>
-        <div class="gift-modal-grid">
-          <div class="gift-modal-card">
-            <div class="gift-top">
-              <span class="bank-name">BANK MANDIRI</span>
-              <img src="img/bank.jpg" class="bank-logo" alt="bank">
-            </div>
-            <p class="label">Nomor Rekening</p>
-            <div class="flex-row"><span class="rekening">1330025558958</span>
-              <button class="btn-salin" onclick="copyText('1330025558958')">📋 Salin</button>
-            </div>
-            <p class="label">Atas Nama</p>
-            <p class="nama">SELLY AMANDA HERLITA</p>
-          </div>
-          <div class="gift-modal-card">
-            <div class="gift-top">
-              <span class="bank-name">BANK BRI</span>
-              <img src="img/bank.jpg" class="bank-logo" alt="bank">
-            </div>
-            <p class="label">Nomor Rekening</p>
-            <div class="flex-row"><span class="rekening">038401044654502</span>
-              <button class="btn-salin" onclick="copyText('038401044654502')">📋 Salin</button>
-            </div>
-            <p class="label">Atas Nama</p>
-            <p class="nama">ADYTIA FADLILLAH</p>
-          </div>
+<!-- MODAL GIFT -->
+<div id="giftModal" class="gift-modal-overlay">
+  <div class="gift-modal-box">
+    
+    <span class="gift-close" onclick="closeGiftModal()">✖</span>
+    <h2 class="gift-modal-title">Wedding Gift</h2>
+
+    <div class="gift-modal-grid">
+
+      <!-- BANK 1 -->
+      <div class="gift-modal-card">
+        <div class="gift-top">
+          <span class="bank-name">BANK MANDIRI</span>
         </div>
-        <div class="gift-modal-card wide">
-          <div class="gift-icon">🎁</div>
-          <div><p class="nama">SELLYA</p><p class="alamat">Kp. Nyangkokot Gunung Sari Kec Citeureup RT3/05</p></div>
+        <p class="label">Nomor Rekening</p>
+        <div class="flex-row">
+          <span class="rekening">1330025558958</span>
+          <button class="btn-salin" onclick="copyText('1330025558958')">📋 Salin</button>
         </div>
-        <button class="btn-konfirmasi">Konfirmasi</button>
+        <p class="label">Atas Nama</p>
+        <p class="nama">SELLY AMANDA HERLITA</p>
+      </div>
+
+      <!-- BANK 2 -->
+      <div class="gift-modal-card">
+        <div class="gift-top">
+          <span class="bank-name">BANK BRI</span>
+        </div>
+        <p class="label">Nomor Rekening</p>
+        <div class="flex-row">
+          <span class="rekening">038401044654502</span>
+          <button class="btn-salin" onclick="copyText('038401044654502')">📋 Salin</button>
+        </div>
+        <p class="label">Atas Nama</p>
+        <p class="nama">ADYTIA FADLILLAH</p>
+      </div>
+
+    </div>
+
+    <!-- ALAMAT -->
+    <div class="gift-modal-card wide">
+      <div class="gift-icon">🎁</div>
+      <div>
+        <p class="nama">SELLYA</p>
+        <p class="alamat">Kp. Nyangkokot Gunung Sari Kec Citeureup RT3/05</p>
       </div>
     </div>
+
+    <button class="btn-konfirmasi">Konfirmasi</button>
+  </div>
+</div>
+
 
     <!-- WEDDING WISH -->
     <div class="container py-5">
@@ -328,19 +342,17 @@
     <!-- EXTERNAL JS -->
     <script src="app.js"></script>
     <div class="petal-container"></div>
+
 <script>
 function createPetals() {
   const container = document.querySelector(".petal-container");
-  const petalCount = 15; // sangat ringan untuk mobile
+  const petalCount = 15;
 
   for (let i = 0; i < petalCount; i++) {
     let petal = document.createElement("div");
     petal.classList.add("petal");
 
-    // posisi random
     petal.style.left = Math.random() * 100 + "%";
-
-    // delay dan speed random
     petal.style.animationDuration = 6 + Math.random() * 4 + "s";
     petal.style.animationDelay = Math.random() * 4 + "s";
 
@@ -348,8 +360,9 @@ function createPetals() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", createPetals);
+createPetals();
 </script>
+
 
 </body>
 </html>
