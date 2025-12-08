@@ -11,40 +11,55 @@
 <body>
 
   <!-- Musik BG -->
-  <audio id="bg-music" loop>
-    <source src="audio/save-and-sound.mp3" type="audio/mp3">
-  </audio>
+<audio id="bg-music" loop>
+  <source src="audio/save-and-sound.mp3" type="audio/mp3">
+</audio>
 
-  <!-- Tombol Musik -->
-  <div id="music-btn" class="music-btn">🎵</div>
+<!-- Tombol Musik -->
+<div id="music-btn" class="music-btn">🎵</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
+  let isPlaying = false;
 
-  <script>
-    const music = document.getElementById("bg-music");
-    const btn = document.getElementById("music-btn");
-    let isPlaying = false;
-    btn.addEventListener("click", () => {
-      if (isPlaying) {
-        music.pause();
-        btn.classList.remove("active");
-      } else {
-        music.play();
+  btn.addEventListener("click", () => {
+    if (isPlaying) {
+      music.pause();
+      btn.classList.remove("active");
+    } else {
+      music.play();
+      btn.classList.add("active");
+    }
+    isPlaying = !isPlaying;
+  });
+
+  document.getElementById("openBtn").addEventListener("click", () => {
+    music.play()
+      .then(() => {
         btn.classList.add("active");
-      }
-      isPlaying = !isPlaying;
-    });
-  </script>
+        isPlaying = true;
+      })
+      .catch(err => console.log("Autoplay dicegah:", err));
+  });
+});
+
+</script>
+
+
 
   <!-- OPENING -->
   <section id="opening" class="opening">
-    <img src="img/bg-prewed.jpg" class="opening-bg" alt="bg">
-    <div class="opening-overlay"></div>
-    <div class="opening-content fade-in">
-      <p class="sub">THE WEDDING OF</p>
-      <h1 class="title">ADITYA & SELLYA</h1>
-      <button id="openBtn" class="open-btn">Buka Undangan</button>
-    </div>
-  </section>
-  
+  <img src="img/bg-prewed.jpg" class="opening-bg" alt="bg">
+  <div class="opening-overlay"></div>
+  <div class="opening-content fade-in">
+    <p class="sub">THE WEDDING OF</p>
+    <h1 class="title">ADITYA & SELLYA</h1>
+    <button id="openBtn" class="open-btn">Buka Undangan</button>
+  </div>
+</section>
+
+
   <p id="guestName" class="guest-name"></p>
 
 
