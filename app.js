@@ -28,6 +28,17 @@ async function kirimUcapan(data) {
     alert("Gagal mengirim ucapan!");
   }
 }
+const urlParams = new URLSearchParams(window.location.search);
+const guest = urlParams.get("to");
+
+const nameElement = document.getElementById("guestName");
+
+if (guest) {
+  nameElement.innerText = "Kepada Yth. " + guest;
+} else {
+  nameElement.innerText = "Kepada Yth. Tamu Undangan";
+}
+
 
 
 // ========================================
