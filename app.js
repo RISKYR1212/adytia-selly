@@ -4,9 +4,9 @@
 const GAS_URL = "https://script.google.com/macros/s/AKfycbwPfsyUV4JlaL05_u1ZPoknGvLPM_kLVUZ9Ioe_opnZhlOzy7SkIMDo4H4NDv5dA8Vvrg/exec";
 
 
-// ========================================
+// ========================================//
 // KIRIM UCAPAN
-// ========================================
+// ========================================//
 async function kirimUcapan(data) {
   const formData = new FormData();
   formData.append("nama", data.nama);
