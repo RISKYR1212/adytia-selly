@@ -1,313 +1,177 @@
-/* =========================================================
-   GLOBAL
-========================================================= */
-body {
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    background: #faf7f2;
-    color: #4a3f35;
-    overflow-x: hidden;
+/* ---------------------------------------------------
+   FONT & RESET
+--------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* =========================================================
-   OPENING PAGE
-========================================================= */
-/* Kontainer utama */
+body {
+  font-family: "Courier 10 Pitch",Courier,monospace;
+  background-color: #f7f4ef;
+  color: #3a3a3a;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/* ---------------------------------------------------
+   GLOBAL
+--------------------------------------------------- */
+.section-title {
+  font-size: 42px;
+  font-family: "Courier 10 Pitch",Courier,monospace;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-text {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  color: #5c5a57;
+}
+
+.hidden {
+  display: none;
+}
+
+/* GOLD BORDER CARD */
+.card-section {
+  padding: 70px 20px;
+}
+
+.box-gold {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #c7b58b;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------------------------
+   MUSIC BUTTON
+--------------------------------------------------- */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #b89c68;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 999;
+  transition: 0.3s ease;
+}
+.music-btn.active {
+  transform: rotate(25deg);
+  background: #8c7750;
+}
+
+/* ---------------------------------------------------
+   OPENING
+--------------------------------------------------- */
 .opening {
-    position: relative; /* ganti fixed jika ingin scrollable */
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    font-family: 'Playfair Display', serif;
-    overflow: hidden;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .opening-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
 }
 
 .opening-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    pointer-events: none; 
-    z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
 }
 
 .opening-content {
-    position: relative;
-    z-index: 2; /* lebih tinggi dari overlay */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    color: #fff7e8;
-    text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fffdf7;
+}
+
+.opening-content .sub {
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+.opening .title {
+  font-family: "Courier 10 Pitch",Courier,monospace;
+  font-size: 65px;
+  color: #f7f7f6;
 }
 
 .open-btn {
-    padding: 12px 34px;
-    border: 1px solid #fff;
-    background: transparent;
-    color: white;
-    font-size: 18px;
-    border-radius: 40px;
-    transition: .3s;
-    cursor: pointer;
+  margin-top: 20px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  background: #fff;
+  border: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
-
 .open-btn:hover {
-    background: white;
-    color: #3d2e21;
+  background: #e9e9e9;
 }
 
-
-
-.hidden { 
-    display: none; 
-}
-/* parallax */
-
-.parallax-section {
-  position: relative;
-  min-height: 100vh; /* Bisa disesuaikan agar menutupi hingga QS Maryam */
-  background-image: url('img/bg-prewed.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Parallax efek */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 20px;
-  color: #fff;
-}
-
-.parallax-section .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5); /* overlay agar tulisan terlihat */
-  z-index: 1;
-}
-
-.parallax-section .content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 1000px;
-}
-
-#bride-groom {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 60px 0;
-    font-family: "Times New Roman", serif;
-}
-
-/* animation gambar adit */
-/* Container animation */
-.person {
-  animation: fadeSlideUp 0.8s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* Photo frame improved animation */
-.photo-frame {
-  display: inline-block;
-  padding: 10px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.3);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  animation: floatPhoto 4s ease-in-out infinite, softZoom 6s ease-in-out infinite;
-}
-
-/* Floating animation (naik turun lembut) */
-@keyframes floatPhoto {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Soft zoom (pelan membesar–mengecil) */
-@keyframes softZoom {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
-}
-
-/* Photo styling */
-.portrait-photo {
-  width: 160px;
-  height: 190px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  animation: photoFade 1.2s ease forwards;
-  opacity: 0;
-}
-
-/* Fade-in untuk foto */
-@keyframes photoFade {
-  to { opacity: 1; }
-}
-
-/* Couple name soft fade */
-.couple-name {
-  animation: nameFade 1.3s ease forwards;
-  opacity: 0;
-}
-@keyframes nameFade {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Deskripsi animasi */
-.desc {
-  animation: descFade 1.5s ease forwards;
-  opacity: 0;
-}
-@keyframes descFade {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Heart animation (pulse beat) */
-.heart {
-  font-size: 40px;
-  margin: 0 25px;
-  animation: heartbeat 1.4s infinite ease-in-out;
-  color: #ff6b9a;
-  text-shadow: 0 0 10px #ff9fbc;
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.2); }
-  50% { transform: scale(0.9); }
-  75% { transform: scale(1.15); }
-}
-
-/* Fade-slide global animation */
+/* ---------------------------------------------------
+   FADE + SLIDE ANIMATION
+--------------------------------------------------- */
 .fade-slide {
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(40px);
   transition: 1s ease;
 }
-
 .fade-slide.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-
-#petal-container {
-  position: fixed;
-  inset: 0;              /* full‑screen overlay */
-  pointer-events: none;  /* supaya klik tetap berfungsi di elemen lain */
-  overflow: hidden;
-  z-index: 5;            /* pastikan di atas background, tapi di bawah konten utama jika perlu */
+/* ---------------------------------------------------
+   BRIDE & GROOM
+--------------------------------------------------- */
+.bride-groom {
+  padding: 60px 20px;
 }
 
-.petal {
-  position: absolute;
-  width: 20px;  /* bisa disesuaikan */
-  height: 20px;
-  background: url('img/rose-petal.png') no-repeat center/contain;
-  opacity: 0.9;
-  top: -50px;  /* mulai dari atas layar */
-  will-change: transform, opacity;
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0.6;
-  }
-}
-
-
-
-.photo-frame {
-    width: 330px;           /* sama seperti contoh */
-    height: 520px;          /* portrait, mirip ukuran asli */
-    margin: 0 auto 20px auto;
-    overflow: hidden;
-    border: 4px solid #ffffff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-radius: 4px;
-}
-
-.portrait-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;       /* pastikan full body portrait tetap rapi */
-    object-position: center;
-}
-
-.couple-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    margin-top: 10px;
-}
-
-.desc {
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 40px;
-}
-
-.separator {
-    font-size: 30px;
-    margin: 40px 0;
-}
-
-
-.photo-frame, .couple-name, .desc, .separator {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all .8s ease;
-}
-
-/* Grid Wrapper */
-#bride-groom .bg-grid {
-  display: grid;
-  grid-template-columns: 1fr 80px 1fr;
+.bg-grid {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 40px;
-  padding: 40px 20px;
+  gap: 50px;
+  flex-wrap: wrap;
 }
 
-/* Person Card */
 .person {
   text-align: center;
+  max-width: 260px;
 }
 
-/* Foto Bulat */
 .photo-frame {
   width: 220px;
-  height: 220px;
-  margin: 0 auto 20px auto;
-  border-radius: 50%;
+  height: 300px;
   overflow: hidden;
-  border: 5px solid #e6d5c1;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  transform: scale(0.9);
-  transition: transform .7s ease, opacity .7s ease;
+  border-radius: 10px;
+  border: 4px solid #cbb184;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
 .portrait-photo {
@@ -316,1291 +180,263 @@ body {
   object-fit: cover;
 }
 
-/* Nama */
-.person-name {
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: 10px;
-  color: #4b3b2f;
+.couple-name {
+  font-family: "Courier 10 Pitch",Courier,monospace;
+  font-size: 45px;
+  color: #f4f2f2;
 }
 
-/* Deskripsi */
-.person-desc {
-  font-size: 16px;
-  color: #5b4c42;
-  line-height: 1.5;
-}
-
-/* Heart Separator */
+/* HEART */
 .heart {
   font-size: 50px;
-  color: #c7a27c;
-  text-align: center;
-  animation: pulse 2s infinite ease-in-out;
+  color: #cbb184;
+  animation: pulse 1.3s infinite ease-in-out;
 }
-
 @keyframes pulse {
-  0% { transform: scale(1); opacity: .7; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: .7; }
+  0% { transform: scale(.9); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(.9); opacity: 0.7; }
 }
 
-/* ANIMASI SCROLL */
-.fade-slide {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all .9s ease-out;
-}
-
-.fade-slide.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Foto ikut smooth animasi */
-.fade-slide.show .photo-frame {
-  transform: scale(1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  #bride-groom .bg-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .heart {
-    font-size: 40px;
-  }
-}
-
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   PARALLAX PORTRAIT (POTRET, MIRIP LINK CONTOH)
-========================================================= */
-
-/* =========================================================
-   COUNTDOWN TIME SECTION
-========================================================= */
-
+/* ---------------------------------------------------
+   COUNTDOWN
+--------------------------------------------------- */
 .countdown-section {
-    position: relative;
-    width: 100%;
-    height: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin-top: -20px;
+  position: relative;
+  text-align: center;
+  padding: 80px 20px;
 }
 
 .countdown-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(70%);
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
 }
 
 .countdown-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
 }
 
 .countdown-content {
-    position: relative;
-    text-align: center;
-    color: white;
+  position: relative;
+  color: white;
 }
 
 .countdown-title {
-    font-size: 42px;
-    margin-bottom: 30px;
-    font-family: 'Great Vibes', cursive;
-}
+  font-size: 40px;
+  font-family: "Cormorant Garamond", serif;
+} 
 
 .countdown-wrapper {
-    display: flex;
-    gap: 60px;
-    justify-content: center;
-    margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
 }
 
 .cd-box {
-    text-align: center;
-}
-
-.cd-box span {
-    font-size: 48px;
-    font-weight: 600;
-}
-
-.cd-box p {
-    margin-top: 6px;
-    font-size: 18px;
-}
-
-/* Button */
-.save-btn {
-    padding: 10px 28px;
-    background: #b48755;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
-    transition: 0.3s;
-}
-
-.save-btn:hover {
-    background: #cf9d63;
-}
-
-.jadwal-section {
-    width: 100%;
-    padding: 50px 0;
-    background: #9a724b;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
-}
-
-.jadwal-card {
-    width: 70%;
-    max-width: 900px;
-    background: white;
-    border-radius: 25px;
-    padding: 40px 30px;
-    text-align: center;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
-}
-
-.judul {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.tanggal-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-bottom: 20px;
-}
-
-.tanggal-box .hari, 
-.tanggal-box .tahun {
-    font-size: 14px;
-    color: #444;
-}
-
-.tanggal {
-    background: #6d6d6d;
-    padding: 10px 25px;
-    border-radius: 10px;
-    color: white;
-}
-
-.tanggal h3 {
-    font-size: 32px;
-    margin: 0;
-}
-
-.tanggal p {
-    font-size: 12px;
-    margin: 0;
-}
-
-.waktu {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.lokasi h4 {
-    margin-top: 20px;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-.lokasi p {
-    margin: 5px 0;
-    font-weight: bold;
-}
-
-.lokasi small {
-    font-size: 12px;
-    display: block;
-}
-
-.btn-maps {
-    margin-top: 15px;
-    display: inline-block;
-    background: #6d6d6d;
-    color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-
-
-.parallax-img {
-    width: 360px;          /* ukuran portrait rapi */
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    
-    /* animasi */
-    opacity: 0;
-    transform: translateY(60px);
-    transition: 1.1s ease;  /* lembut seperti contoh */
-}
-
-.parallax-img.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================================================
-   SECTION TEXT
-========================================================= */
-.section {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.section h2 {
-    font-size: 32px;
-    color: #6a4c32;
-    margin-bottom: 20px;
-}
-
-.section p {
-    max-width: 600px;
-    margin: auto;
-    font-size: 18px;
-    color: #4a3f35;
-    line-height: 1.65;
-}
-
-/* =========================================================
-   CARD SECTION (BRIDE & GROOM)
-========================================================= */
-.card-section {
-    max-width: 700px;
-    background: #ffffff;
-    padding: 60px 30px;
-    margin: -40px auto 100px;
-    border-radius: 14px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-    text-align: center;
-}
-
-/* =========================================================
-   GALLERY
-========================================================= */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    padding: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-}
-
-/* ===========================
-   WEDDING GIFT MODAL FIXED
-=========================== */
-
-.gift-modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 999999999;
-}
-/* =========================
-   Wedding Gift Button Elegant
-========================= */
-.gift-btn {
-    padding: 14px 32px;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: 'Cormorant Garamond', serif;
-    color: #fff;
-    background: linear-gradient(135deg, #b48755, #cf9d63);
-    border: none;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.gift-btn:hover {
-    background: linear-gradient(135deg, #cf9d63, #b48755);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-
-.gift-btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-}
-
-
-.gift-modal-overlay.show {
-    display: flex;
-}
-
-.gift-modal-box {
-    background: #fff;
-    width: 90%;
-    max-width: 900px;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    position: relative;
-    animation: giftPop .35s ease-out;
-}
-
-@keyframes giftPop {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.gift-close {
-    position: absolute;
-    top: 14px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #444;
-}
-
-.gift-modal-title {
-    text-align: center;
-    font-size: 40px;
-    font-family: 'Cormorant Garamond', serif;
-    margin-bottom: 30px;
-}
-
-/* Grid */
-.gift-modal-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-/* Card */
-.gift-modal-card {
-    background: #f6f6f6;
-    padding: 22px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-}
-
-.bank-logo {
-    width: 60px;
-    height: auto;
-    border-radius: 6px;
-    margin-left: auto;
-}
-
-
-.gift-modal-card.wide {
-    grid-column: span 2;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 25px;
-}
-
-.bank-name {
-    font-weight: bold;
-}
-
-.label {
-    color: #666;
-    margin-top: 10px;
-    font-size: 13px;
-}
-
-.rekening {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.btn-salin {
-    background: #6bbd4f;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-}
-
-.btn-konfirmasi {
-    width: 100%;
-    padding: 12px;
-    background: #7a5f42;
-    border: none;
-    color: white;
-    margin-top: 25px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.btn-konfirmasi:hover {
-    opacity: 0.85;
-}
-
-
-
-
-/* ANIMASI */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===============================
-   WEDDING WISH STYLE
-   =============================== */
-
-#wedding-wish {
-  padding: 60px 20px;
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-}
-
-#wedding-wish .section-title {
-  font-size: 36px;
-  font-weight: 600;
-  color: #b88a44;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-}
-
-/* Font Premium */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@500;600&display=swap');
-
-/* Section */
-.wish-section {
-  width: 100%;
-  padding: 70px 20px;
-  background: #faf7f1;
-}
-
-.wish-title {
-  font-family: "Playfair Display", serif;
-  font-size: 40px;
-  font-weight: 600;
-  color: #b88a19;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.wish-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.wish-form {
-  width: 420px;
-}
-
-.wish-card {
-  background: #fffdf9;
-  padding: 25px;
-  border-radius: 18px;
-  border: 1px solid rgba(184, 134, 11, 0.25);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-.wish-input,
-.wish-textarea,
-.wish-select {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #e6d5bd;
-  margin-bottom: 16px;
-}
-
-.wish-btn {
-  width: 100%;
-  background: linear-gradient(45deg, #cfa0ff, #a870ff);
-  color: white;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-/* BUBBLE LIST */
-.wish-bubble-list {
-  width: 550px;
-  max-height: 700px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-.bubble {
-  background: #fff;
-  padding: 18px;
-  border-radius: 16px;
-  border: 1px solid rgba(197, 144, 10, 0.4);
-  box-shadow: 0 5px 16px rgba(0,0,0,0.08);
-  margin-bottom: 16px;
-}
-
-.bubble .name {
-  font-weight: bold;
-  color: #b88a19;
-  margin-bottom: 6px;
-}
-
-.bubble .message {
-  font-size: 15px;
-  color: #444;
-}
-.row-equal {
-    display: flex;
-    align-items: stretch;
-}
-
-.box-gold {
-    background: linear-gradient(180deg, #c99a29, #b88a19);
-    border-radius: 14px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.18);
-    padding: 25px;
-    color: white;
-    width: 100%;
-    height: 100%;
-}
-
-
-
-/* INPUT */
-.wish-input,
-.wish-textarea,
-.wish-select {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #e6d5bd;
-  margin-bottom: 18px;
-}
-
-.wish-btn {
-  width: 100%;
-  background: linear-gradient(45deg, #d1a855, #b88a2b);
-  color: white;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-/* LIST BUBBLE KANAN */
-.wish-bubble-list {
-  width: 550px;
-  max-height: 650px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-/* BUBBLE */
-.bubble {
-  background: white;
-  padding: 18px 22px;
-  border-radius: 15px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  border: 1px solid rgba(184, 134, 11, 0.35);
-  margin-bottom: 18px;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-  .wish-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .wish-form,
-  .wish-bubble-list {
-    width: 100%;
-  }
-}
-
-
-
-
-.wish-form-box {
-  max-width: 500px;
-  margin: 0 auto 40px;
-  padding: 25px;
-  background: #ffffffdd;
-  border: 1px solid #d8c49d;
-  border-radius: 15px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.2);
+  border: 1px solid #cbb184;
+  padding: 12px 20px;
+  border-radius: 10px;
   backdrop-filter: blur(5px);
 }
 
-.wish-form-box input,
-.wish-form-box textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #c8b38d;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  background: #fff;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+.cd-box span {
+  font-size: 35px;
+  font-weight: bold;
 }
 
-.wish-form-box textarea {
-  height: 120px;
-  resize: none;
+/* ---------------------------------------------------
+   JADWAL
+--------------------------------------------------- */
+.jadwal-section {
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
 }
 
-.btn-submit {
-  width: 100%;
-  padding: 12px;
-  background: #c9a15a;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  font-family: 'Cormorant Garamond', serif;
-  transition: 0.3s;
+.jadwal-card {
+  width: 300px;
+  padding: 25px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #cbb184;
+  border-radius: 12px;
+  text-align: center;
+  backdrop-filter: blur(8px);
 }
 
-.btn-submit:hover {
-  background: #b08848;
+.judul {
+  font-family: "Great Vibes";
+  font-size: 36px;
+  color: #a3854f;
 }
 
-/* ===============================
-   LIST UCAPAN
-   =============================== */
-
-.wish-list {
-  max-width: 600px;
-  margin: 0 auto;
+.tanggal-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
 }
 
-.wish-card {
-  background: #fffdf8;
-  border: 1px solid #d8c49d;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  padding: 20px;
-  text-align: left;
-  box-shadow: 0px 6px 16px rgba(0,0,0,0.08);
-  position: relative;
-  animation: fadeUp 0.7s ease both;
-}
-
-.wish-card::before {
-  content: "❝";
-  position: absolute;
-  top: -10px;
-  left: 15px;
+.tanggal h3 {
   font-size: 40px;
-  color: #d5c29a;
-}
-
-.wish-card h4 {
-  margin: 0 0 5px;
-  color: #75592e;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.wish-card p {
   margin: 0;
-  color: #444;
-  line-height: 1.5;
-  font-size: 18px;
+  color: #b89c68;
 }
 
-/* ===============================
-   ANIMATION
-   =============================== */
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-footer {
-    padding: 45px;
-    background: #3b2918;
-    color: #f1e6d4;
-    text-align: center;
-    font-size: 20px;
-}
-
-/* =========================================================
-   ANIMASI (SAMA PERSIS SEPERTI DI LINK)
-========================================================= */
-
-/* Fade + slide ke atas */
-.fade-slide {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 1.2s ease;    /* lembut */
-}
-
-.fade-slide.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Fade normal */
-.fade-in {
-    opacity: 0;
-    animation: fadein 1.2s forwards;
-}
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* ===== CLOSING FULLSCREEN ===== */
-.closing {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* Background blur memenuhi layar */
-.closing-bg-blur {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: blur(18px) brightness(0.55);
-    transform: scale(1.1);
-    z-index: 1;
-}
-
-/* Foto utama, tampil utuh (no crop) */
-.closing-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: 2;
-}
-
-/* Gradient agar tulisan tetap terlihat */
-.closing-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
-    z-index: 3;
-}
-
-/* Tulisan */
-.closing-content {
-    position: absolute;
-    top: 10%;
-    right: 43%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 20;          
-    color: white;
-}
-
-.music-btn {
-  position: fixed;
-  bottom: 20px;   /* bisa ubah ke top:20px kalau mau di atas */
-  right: 20px;
-  background: white;
-  color: black;
-  font-size: 28px;
-  padding: 10px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 9999;
-  transition: 0.3s;
-}
-
-.music-btn.active {
-  background: #f14e95;
+.btn-maps {
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: #b89c68;
   color: white;
+  border-radius: 6px;
+  display: inline-block;
+  text-decoration: none;
 }
 
-
-
-
-.closing-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 58px;
-    margin-bottom: 20px;
+/* ---------------------------------------------------
+   GALLERY
+--------------------------------------------------- */
+.gallery {
+  columns: 2;
+  column-gap: 10px;
+  padding: 10px;
 }
-
-.closing-text {
-    font-size: 15px;
-    margin: 0 auto 15px;
-    max-width: 650px;
-}
-
-.closing-sub {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.closing-names {
-    font-size: 32px;
-    letter-spacing: 2px;
-    margin-top: 10px;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-/* Hilangkan footer lama */
-footer.footer {
-    display: none;
-}
-
-/* =========================================================
-   PREMIUM ANIMATIONS
-========================================================= */
-
-/* =========================
-   Opening Zoom + Fade
-========================= */
-.opening-content {
-    opacity: 0;
-    transform: scale(0.95);
-    animation: openingFadeZoom 1.2s ease forwards 0.5s;
-}
-
-@keyframes openingFadeZoom {
-    0% { opacity: 0; transform: scale(0.95); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-.opening-bg {
-    animation: bgZoom 12s ease forwards;
-}
-
-@keyframes bgZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
-}
-
-/* =========================
-   Fade Slide Elegant
-========================= */
-.fade-slide {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease-out;
-}
-
-.fade-slide.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Stagger effect */
-.fade-slide:nth-child(1) { transition-delay: 0.2s; }
-.fade-slide:nth-child(2) { transition-delay: 0.4s; }
-.fade-slide:nth-child(3) { transition-delay: 0.6s; }
-.fade-slide:nth-child(4) { transition-delay: 0.8s; }
-
-/* =========================
-   Parallax Smooth Entrance
-========================= */
-.parallax-img {
-    opacity: 0;
-    transform: translateY(60px);
-    transition: transform 1s ease, opacity 1s ease;
-}
-
-.parallax-img.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================
-   Gallery Hover Animation
-========================= */
 .gallery img {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-.gallery img:hover {
-    transform: scale(1.05) rotate(1deg);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-
-/* =========================
-   Countdown Scale Animation
-========================= */
-.cd-box {
-    transition: transform 0.3s ease;
-}
-.cd-box:hover {
-    transform: scale(1.1);
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 3px solid #d5c2a4;
 }
 
-/* =========================
-   Gift Modal Pop
-========================= */
+/* ---------------------------------------------------
+   GIFT MODAL
+--------------------------------------------------- */
+.gift-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+.gift-modal-overlay.show {
+  display: flex;
+}
+
 .gift-modal-box {
-    transform: translateY(30px) scale(0.95);
-    opacity: 0;
-    animation: giftPop 0.35s ease-out forwards;
+  width: 90%;
+  max-width: 500px;
+  background: #fffdf7;
+  border-radius: 15px;
+  padding: 25px;
+  border: 2px solid #cbb184;
+  position: relative;
 }
 
-@keyframes giftPop {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+.gift-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
 }
 
-/* =========================
-   Wedding Wish Card Rise
-========================= */
-.wish-card {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: wishRise 0.7s ease forwards;
+.gift-modal-title {
+  text-align: center;
+  font-family: "open sans",sans-serif;
+  font-size: 40px;
+  color: #b89c68;
 }
 
-@keyframes wishRise {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+.gift-modal-grid {
+  margin-top: 20px;
+  display: grid;
+  gap: 15px;
 }
 
-/* Stagger wedding wish */
-.wish-card:nth-child(1) { animation-delay: 0.2s; }
-.wish-card:nth-child(2) { animation-delay: 0.4s; }
-.wish-card:nth-child(3) { animation-delay: 0.6s; }
-
-/* =========================
-   Closing Fade + Blur
-========================= */
-.closing-content {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: closingFade 1.2s ease forwards 0.3s;
+.gift-modal-card {
+  background: #faf7f1;
+  border: 1px solid #cbb184;
+  border-radius: 10px;
+  padding: 15px;
 }
 
-@keyframes closingFade {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+.btn-salin {
+  background: #b89c68;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
 }
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-:root {
-    --fade-duration: 0.9s;
-    --fade-delay-step: 0.15s;
-    --zoom-duration: 1.2s;
-    --parallax-duration: 1s;
+.btn-konfirmasi {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #b89c68;
+  color: #fffde8;
+  border-radius: 10px;
+  border: none;
 }
 
-/* =========================================================
-   OPENING ANIMATION
-========================================================= */
-.opening-content {
-    opacity: 0;
-    transform: scale(0.95) translateY(20px);
-    animation: openingFadeZoom var(--zoom-duration) cubic-bezier(0.65, 0, 0.35, 1) forwards 0.5s;
-}
-
-@keyframes openingFadeZoom {
-    0% { opacity: 0; transform: scale(0.95) translateY(20px); }
-    50% { opacity: 0.6; transform: scale(1.02) translateY(0); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.opening-bg {
-    animation: bgZoom 12s ease-in-out forwards;
-}
-
-@keyframes bgZoom {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1.1); }
-}
-
-/* =========================================================
-   FADE SLIDE PRECISE
-========================================================= */
-.fade-slide {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.fade-slide.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Stagger untuk semua children */
-.fade-slide:nth-child(n) {
-    transition-delay: calc(var(--fade-delay-step) * (var(--i, 1)));
-}
-
-/* =========================================================
-   PARALLAX IMAGE
-========================================================= */
-.parallax-img {
-    opacity: 0;
-    transform: translateY(60px);
-    transition: transform var(--parallax-duration) cubic-bezier(0.65, 0, 0.35, 1),
-                opacity var(--parallax-duration) cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.parallax-img.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================================================
-   GALLERY HOVER
-========================================================= */
-.gallery img {
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gallery img:hover {
-    transform: scale(1.06) rotate(1deg);
-    box-shadow: 0 14px 28px rgba(0,0,0,0.28);
-}
-
-/* =========================================================
-   COUNTDOWN SCALE
-========================================================= */
-.cd-box {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.cd-box:hover {
-    transform: scale(1.12);
-}
-
-/* =========================================================
-   GIFT MODAL POP
-========================================================= */
-.gift-modal-box {
-    transform: translateY(30px) scale(0.95);
-    opacity: 0;
-    animation: giftPop 0.35s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-@keyframes giftPop {
-    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-    50% { opacity: 0.6; transform: translateY(10px) scale(1.02); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* =======================
-   WEDDING WISH FORM
-   ======================= */
-#wedding-wish {
-  padding: 40px 20px;
+/* ---------------------------------------------------
+   CLOSING SECTION
+--------------------------------------------------- */
+.closing {
+  position: relative;
+  padding: 80px 20px;
   text-align: center;
 }
 
-.wish-form {
-  max-width: 450px;
+.closing-bg-blur {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  margin: 0 auto;
-  padding: 25px;
-  background: #ffffffee;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  backdrop-filter: blur(8px);
-  animation: fadeSlideUp 0.8s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
+  height: 100%;
+  object-fit: cover;
+  filter: blur(7px) brightness(0.7);
 }
 
-/* Animation */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.form-group {
-  text-align: left;
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  font-weight: 600;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 5px;
-  color: #444;
-}
-
-.wish-form input,
-.wish-form textarea,
-.wish-form select {
+.closing-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 14px;
-  outline: none;
-  transition: 0.3s;
-  background: #fafafa;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
 }
 
-.wish-form input:focus,
-.wish-form textarea:focus,
-.wish-form select:focus {
-  border-color: #d699ff;
-  box-shadow: 0 0 10px #c68cff55;
+.closing-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.28);
 }
 
-.wish-btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(45deg, #d28aff, #a86bff);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.wish-btn:hover {
-  background: linear-gradient(45deg, #b96bff, #8d50ff);
-  transform: translateY(-2px);
-}
-
-/* Feedback */
-.wish-feedback {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* List of Wishes */
-.wish-list {
-  margin-top: 25px;
-  display: grid;
-  gap: 12px;
-}
-
-.wish-card {
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-  animation: fadeSlideUp 0.6s ease forwards;
-}
-
-.wish-card h4 {
-  margin-bottom: 5px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.wish-card p {
-  font-size: 14px;
-  color: #444;
-}
-
-
-/* =========================================================
-   WEDDING WISH CARDS
-========================================================= */
-.wish-card {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: wishRise 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-@keyframes wishRise {
-    0% { opacity: 0; transform: translateY(30px); }
-    50% { opacity: 0.6; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Stagger presisi */
-.wish-card:nth-child(1) { animation-delay: 0.2s; }
-.wish-card:nth-child(2) { animation-delay: 0.35s; }
-.wish-card:nth-child(3) { animation-delay: 0.5s; }
-.wish-card:nth-child(4) { animation-delay: 0.65s; }
-
-/* =========================================================
-   CLOSING ANIMATION
-========================================================= */
 .closing-content {
-    opacity: 0;
-    transform: translateY(30px) scale(0.97);
-    animation: closingFade 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.3s;
+  position: relative;
+  color: white;
 }
 
-@keyframes closingFade {
-    0% { opacity: 0; transform: translateY(30px) scale(0.97); }
-    50% { opacity: 0.6; transform: translateY(10px) scale(1.03); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
+.closing-title {
+  font-size: 52px;
+  font-family:"Courier 10 Pitch",Courier,monospace;
+  color: #e2d4b3;
+}
+
+.closing-names {
+  font-family: "Courier 10 Pitch",Courier,monospace;
+  font-size: 46px;
+  margin-top: 10px;
+  color: #f7e6c3;
 }

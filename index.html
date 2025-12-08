@@ -61,8 +61,8 @@
       <h2 class="section-title">Bride & Groom</h2>
       <p class="section-text">
         Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh,
-        <br>pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
-        <br><strong>QS. Ar-Rum Ayat 21</strong>
+        pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+        <strong>QS. Ar-Rum Ayat 21</strong>
       </p>
     </section>
 
@@ -327,5 +327,29 @@
 
     <!-- EXTERNAL JS -->
     <script src="app.js"></script>
+    <div class="petal-container"></div>
+<script>
+function createPetals() {
+  const container = document.querySelector(".petal-container");
+  const petalCount = 15; // sangat ringan untuk mobile
+
+  for (let i = 0; i < petalCount; i++) {
+    let petal = document.createElement("div");
+    petal.classList.add("petal");
+
+    // posisi random
+    petal.style.left = Math.random() * 100 + "%";
+
+    // delay dan speed random
+    petal.style.animationDuration = 6 + Math.random() * 4 + "s";
+    petal.style.animationDelay = Math.random() * 4 + "s";
+
+    container.appendChild(petal);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", createPetals);
+</script>
+
 </body>
 </html>
