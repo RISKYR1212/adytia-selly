@@ -35,7 +35,7 @@ async function kirimUcapan(data) {
 // ========================================
 async function ambilUcapan() {
   try {
-    const res = await fetch(GAS_URL + "?mode=read");
+    const res = await fetch(GAS_URL);
 
     const data = await res.json();
     renderUcapan(data);
@@ -89,11 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
     await kirimUcapan(data);
     form.reset();
 
-    setTimeout(ambilUcapan, 800);
+    setTimeout(ambilUcapan, 500);
   });
 
   ambilUcapan();
 });
+
 
 // ===================================================
 // BUKA GOOGLE MAPS
