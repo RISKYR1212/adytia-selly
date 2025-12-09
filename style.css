@@ -84,13 +84,43 @@ img {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  transition: transform 3s ease, opacity 3s ease;
 }
+
+
 
 .opening-bg {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.65);
+    object-fit: cover;
+    filter: brightness(0.65); /* Nilai filter asli */
+    
+    /* === TAMBAHKAN ANIMASI INI === */
+    animation: zoomInBg 30s ease-out forwards; /* Durasi 5 detik, transisi halus */
+    transform: scale(1.05);
 }
+/* ANIMASI SLIDE UP SAAT DIBUKA */
+/* ANIMASI GESER KE ATAS */
+.opening.slide-up {
+  animation: slideUp 2s ease-out forwards;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
+/* @keyframes slideUp {
+  0% {
+    transform: translateY(0);
+    opacity: 5000;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+} */
+
+
 
 .opening-overlay {
   position: absolute;
@@ -108,8 +138,9 @@ img {
 }
 
 .opening-content .sub {
-  font-size: 16px;
+  font-size: 30px;
   letter-spacing: 4px;
+  margin-top: 10px;
 }
 
 .opening .title {
@@ -138,11 +169,12 @@ img {
 .fade-slide {
   opacity: 0;
   transform: translateY(40px);
-  transition: 1s ease;
+  transition: 5s ease;
 }
 .fade-slide.show {
-  opacity: 1;
+  opacity: 2;
   transform: translateY(0);
+  transition: 5s ease;
 }
 
 /* ---------------------------------------------------
@@ -188,14 +220,25 @@ img {
 
 /* HEART */
 .heart {
+  position: fixed;
+  top: 80px;
+  right: 20px;
   font-size: 50px;
   color: #cbb184;
   animation: pulse 1.3s infinite ease-in-out;
+  z-index: 9999;
 }
 @keyframes pulse {
   0% { transform: scale(.9); opacity: 0.7; }
   50% { transform: scale(1); opacity: 1; }
   100% { transform: scale(.9); opacity: 0.7; }
+}
+@media (max-width: 480px) {
+  .heart {
+    top: 350px;       /* jangan pakai top */
+    bottom: 25px;    /* turun ke bawah */
+    right: 20px;
+  }
 }
 
 /* ---------------------------------------------------
@@ -554,10 +597,11 @@ img {
   color: #f7e6c3;
 }
 .guest-name {
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: 600;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 80px;
+
 }
 
 /* ---------------------------------------------------

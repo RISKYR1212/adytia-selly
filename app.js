@@ -34,9 +34,9 @@ const guest = urlParams.get("to");
 const nameElement = document.getElementById("guestName");
 
 if (guest) {
-  nameElement.innerText = "Kepada Yth. " + guest;
+  nameElement.innerText = " " + guest;
 } else {
-  nameElement.innerText = "Kepada Yth. Tamu Undangan";
+  nameElement.innerText = " Tamu Undangan";
 }
 
 

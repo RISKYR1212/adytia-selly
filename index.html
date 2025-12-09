@@ -54,13 +54,26 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="opening-overlay"></div>
   <div class="opening-content fade-in">
     <p class="sub">THE WEDDING OF</p>
+     <p id="guestName" class="guest-name"></p>
     <h1 class="title">ADITYA & SELLYA</h1>
     <button id="openBtn" class="open-btn">Buka Undangan</button>
   </div>
 </section>
+<script>
+document.getElementById("openBtn").addEventListener("click", () => {
+  const opening = document.getElementById("opening");
+  
+  
 
+  // Tambahkan class animasi
+  opening.classList.add("slide-up");
 
-  <p id="guestName" class="guest-name"></p>
+  // Jika ada musik, putar disini
+  const music = document.getElementById("bg-music");
+  if (music) music.play().catch(()=>{});
+});
+</script>
+
 
 
   <!-- MAIN CONTENT -->
