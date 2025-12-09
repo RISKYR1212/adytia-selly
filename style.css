@@ -220,7 +220,7 @@ img {
 
 /* HEART */
 .heart {
-  position: fixed;
+  position: center;
   top: 80px;
   right: 20px;
   font-size: 50px;
@@ -235,9 +235,9 @@ img {
 }
 @media (max-width: 480px) {
   .heart {
-    top: 350px;       /* jangan pakai top */
+    top: 400px;       /* jangan pakai top */
     bottom: 25px;    /* turun ke bawah */
-    right: 20px;
+    right: 10px;
   }
 }
 
